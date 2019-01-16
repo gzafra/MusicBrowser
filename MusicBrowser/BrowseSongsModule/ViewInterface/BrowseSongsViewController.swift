@@ -144,27 +144,13 @@ extension BrowseSongsViewController: UITableViewDataSource {
 // MARK: - Search
 
 extension BrowseSongsViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
-        searchBar.resignFirstResponder()
-     
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-       
-        searchBar.resignFirstResponder()
-        
-    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
+        // TODO: Could schedule a search after N seconds
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         guard let searchedString = searchBar.text else { return }
         presenter.userSearched(string: searchedString)
     }
@@ -179,7 +165,7 @@ extension BrowseSongsViewController: BrowseSongsViewInterface {
     }
     
     func showError(message: String) {
-        
+        UIAlertController.show(title: "Oops!", message: message, in: self)
     }
     
 }

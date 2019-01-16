@@ -31,6 +31,7 @@
 		B606D17321EF90B80072FFDB /* SearchSongsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D17221EF90B80072FFDB /* SearchSongsRequest.swift */; };
 		B606D17521EF91090072FFDB /* ITunesEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D17421EF91090072FFDB /* ITunesEndpoints.swift */; };
 		B606D17721EF95300072FFDB /* SearchSongsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D17621EF95300072FFDB /* SearchSongsResponse.swift */; };
+		B606D17B21EFA0020072FFDB /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D17A21EFA0020072FFDB /* UIAlertControllerExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		B606D17221EF90B80072FFDB /* SearchSongsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongsRequest.swift; sourceTree = "<group>"; };
 		B606D17421EF91090072FFDB /* ITunesEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesEndpoints.swift; sourceTree = "<group>"; };
 		B606D17621EF95300072FFDB /* SearchSongsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongsResponse.swift; sourceTree = "<group>"; };
+		B606D17A21EFA0020072FFDB /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 		B606D15421EF6B7C0072FFDB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B606D17921EF9FF00072FFDB /* UIAlert */,
 				B606D15721EF6B940072FFDB /* UIView */,
 			);
 			path = Extensions;
@@ -260,6 +263,14 @@
 				B606D17421EF91090072FFDB /* ITunesEndpoints.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		B606D17921EF9FF00072FFDB /* UIAlert */ = {
+			isa = PBXGroup;
+			children = (
+				B606D17A21EFA0020072FFDB /* UIAlertControllerExtensions.swift */,
+			);
+			path = UIAlert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +390,7 @@
 				B606D15621EF6B8E0072FFDB /* LayoutExtensions.swift in Sources */,
 				B606D16C21EF6E4F0072FFDB /* SongListCell.swift in Sources */,
 				B606D12121EF69910072FFDB /* AppDelegate.swift in Sources */,
+				B606D17B21EFA0020072FFDB /* UIAlertControllerExtensions.swift in Sources */,
 				B606D14F21EF6B380072FFDB /* EndpointProtocol.swift in Sources */,
 				B606D16521EF6D3B0072FFDB /* BrowseSongsViewModel.swift in Sources */,
 				B606D16321EF6D320072FFDB /* BrowseSongsPresenter.swift in Sources */,
