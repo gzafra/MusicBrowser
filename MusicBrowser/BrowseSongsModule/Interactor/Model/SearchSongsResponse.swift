@@ -1,5 +1,5 @@
 //
-//  SearchSongsData.swift
+//  SearchSongsResponse.swift
 //  MusicBrowser
 //
 //  Created by Guillermo Zafra on 16/01/2019.
@@ -8,6 +8,7 @@
 
 import Foundation
 
-struct SearchSongsData: Decodable {
-    
+struct SearchSongsResponse: Decodable {
+    let results: [SongData]
+    let resultCount: Int
 }

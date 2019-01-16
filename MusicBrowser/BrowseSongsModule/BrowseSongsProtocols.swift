@@ -9,14 +9,14 @@
 import Foundation
 
 protocol BrowseSongsInteractorProtocol: class {
-    func seachSongs(successBlock: @escaping SearchSongsCompletion, failureBlock: @escaping ()->())
+    func seachSongs(with terms: [String], successBlock: @escaping SearchSongsCompletion, failureBlock: @escaping () -> ()) 
 }
 
 protocol BrowseSongsPresenterProtocol: class {
     var interactor: BrowseSongsInteractorProtocol { get }
     var viewInterface: BrowseSongsViewInterface? { get set }
     func viewDidLoad()
-    func viewNeedsUpdatedData()
+    func userSearched(string: String)
 }
 
 protocol BrowseSongsViewInterface: class {

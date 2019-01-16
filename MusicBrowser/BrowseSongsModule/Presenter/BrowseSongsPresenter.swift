@@ -20,21 +20,26 @@ class BrowseSongsPresenter {
 extension BrowseSongsPresenter: BrowseSongsPresenterProtocol {
 
     func viewDidLoad() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let viewModel = BrowseSongsViewModel(songs: [
-                SongViewModel(title: "First Song", artist: "Artist 1"),
-                SongViewModel(title: "Second Song", artist: "Artist 1"),
-                SongViewModel(title: "Third Song", artist: "Artist 2"),
-                SongViewModel(title: "Awesome Song", artist: "Artist 2"),
-                SongViewModel(title: "Nasty Song", artist: "Artist 2")
-                ])
+        // TODO: Show empty view, preloaded data, ...
+    }
+    
+    func userSearched(string: String) {
+        let terms: [String] = string.components(separatedBy: [" ", ","])
+        interactor.seachSongs(with: terms, successBlock: { [weak self] (response) in
+            guard let self = self else { return }
+            let viewModel = self.generateSongsViewModel(for: response)
             self.viewInterface?.viewShouldUpdate(with: viewModel)
+        }) { [weak self] in
+            self?.viewInterface?.showError(message: "Failed to load data")
         }
     }
     
-    func viewNeedsUpdatedData() {
+    private func generateSongsViewModel(for data: SearchSongsResponse) -> BrowseSongsViewModel {
         
+        let songs = data.results.map{ song in
+            return SongViewModel(title: song.trackName, artist: song.artistName)
+        }
+        return BrowseSongsViewModel(songs: songs)
     }
-    
     
 }

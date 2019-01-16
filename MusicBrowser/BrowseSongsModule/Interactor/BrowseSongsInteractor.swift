@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias SearchSongsCompletion = (SearchSongsData)->Void
+typealias SearchSongsCompletion = (SearchSongsResponse)->Void
 
 class BrowseSongsInteractor {
     // MARK: - Private properties
@@ -20,8 +20,18 @@ class BrowseSongsInteractor {
 }
 
 extension BrowseSongsInteractor: BrowseSongsInteractorProtocol {
-    func seachSongs(successBlock: @escaping SearchSongsCompletion, failureBlock: @escaping () -> ()) {
-        
+    func seachSongs(with terms: [String], successBlock: @escaping SearchSongsCompletion, failureBlock: @escaping () -> ()) {
+        var request = SearchSongsRequest(terms: terms)
+        request.completion = { result in
+            switch result {
+            case .success(let data):
+                successBlock(data)
+            case .failure(_):
+                failureBlock()
+                break
+            }
+        }
+        requestManager.send(request: request)
     }
     
 }

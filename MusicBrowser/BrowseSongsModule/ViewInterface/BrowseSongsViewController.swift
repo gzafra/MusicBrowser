@@ -163,6 +163,11 @@ extension BrowseSongsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchedString = searchBar.text else { return }
+        presenter.userSearched(string: searchedString)
+    }
 }
 
 // MARK: - Presentation
