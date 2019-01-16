@@ -19,8 +19,7 @@ extension BrowseSongsRouter: BrowseSongsRouterProtocol {
         let presenter = BrowseSongsPresenter(interactor: interactor)
         let router = BrowseSongsRouter()
         let viewInterface = BrowseSongsViewController(presenter: presenter, router: router)
-        
-        // Setup
+
         presenter.viewInterface = viewInterface
         
         return viewInterface

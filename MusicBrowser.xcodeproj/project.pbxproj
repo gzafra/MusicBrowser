@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B606D12121EF69910072FFDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D12021EF69910072FFDB /* AppDelegate.swift */; };
-		B606D12321EF69910072FFDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D12221EF69910072FFDB /* ViewController.swift */; };
-		B606D12621EF69910072FFDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B606D12421EF69910072FFDB /* Main.storyboard */; };
 		B606D12821EF69920072FFDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B606D12721EF69920072FFDB /* Assets.xcassets */; };
 		B606D12B21EF69920072FFDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B606D12921EF69920072FFDB /* LaunchScreen.storyboard */; };
 		B606D13621EF69930072FFDB /* MusicBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D13521EF69930072FFDB /* MusicBrowserTests.swift */; };
@@ -45,8 +43,6 @@
 /* Begin PBXFileReference section */
 		B606D11D21EF69910072FFDB /* MusicBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B606D12021EF69910072FFDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B606D12221EF69910072FFDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B606D12521EF69910072FFDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B606D12721EF69920072FFDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B606D12A21EF69920072FFDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B606D12C21EF69920072FFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,10 +112,6 @@
 				B606D14121EF6A190072FFDB /* Common */,
 				B606D14021EF6A110072FFDB /* Resources */,
 				B606D12021EF69910072FFDB /* AppDelegate.swift */,
-				B606D12221EF69910072FFDB /* ViewController.swift */,
-				B606D12421EF69910072FFDB /* Main.storyboard */,
-				B606D12721EF69920072FFDB /* Assets.xcassets */,
-				B606D12921EF69920072FFDB /* LaunchScreen.storyboard */,
 				B606D12C21EF69920072FFDB /* Info.plist */,
 			);
 			path = MusicBrowser;
@@ -137,6 +129,8 @@
 		B606D14021EF6A110072FFDB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B606D12721EF69920072FFDB /* Assets.xcassets */,
+				B606D12921EF69920072FFDB /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -335,7 +329,6 @@
 				B606D16D21EF6E4F0072FFDB /* SongListCell.xib in Resources */,
 				B606D12B21EF69920072FFDB /* LaunchScreen.storyboard in Resources */,
 				B606D12821EF69920072FFDB /* Assets.xcassets in Resources */,
-				B606D12621EF69910072FFDB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +355,6 @@
 				B606D16921EF6DBA0072FFDB /* BrowseSongsViewController.swift in Sources */,
 				B606D14D21EF6B1B0072FFDB /* RequestManager.swift in Sources */,
 				B606D15C21EF6C480072FFDB /* BrowseSongsInteractor.swift in Sources */,
-				B606D12321EF69910072FFDB /* ViewController.swift in Sources */,
 				B606D15921EF6C1C0072FFDB /* BrowseSongsProtocols.swift in Sources */,
 				B606D15121EF6B490072FFDB /* ResultError.swift in Sources */,
 				B606D15621EF6B8E0072FFDB /* LayoutExtensions.swift in Sources */,
@@ -393,14 +385,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B606D12421EF69910072FFDB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B606D12521EF69910072FFDB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B606D12921EF69920072FFDB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

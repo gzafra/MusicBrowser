@@ -20,10 +20,10 @@ struct SongViewModel {
     
     let title: String
     let artist: String
-    let albumTitle: String
-    let releaseDate: String
-    let coverThumbnailUrl: String
-    let songLength: String
-    let genre: String
-    let price: String
+//    let albumTitle: String
+//    let releaseDate: String
+//    let coverThumbnailUrl: String
+//    let songLength: String
+//    let genre: String
+//    let price: String
 }

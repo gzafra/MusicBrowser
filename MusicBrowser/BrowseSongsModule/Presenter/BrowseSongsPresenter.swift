@@ -20,7 +20,16 @@ class BrowseSongsPresenter {
 extension BrowseSongsPresenter: BrowseSongsPresenterProtocol {
 
     func viewDidLoad() {
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            let viewModel = BrowseSongsViewModel(songs: [
+                SongViewModel(title: "First Song", artist: "Artist 1"),
+                SongViewModel(title: "Second Song", artist: "Artist 1"),
+                SongViewModel(title: "Third Song", artist: "Artist 2"),
+                SongViewModel(title: "Awesome Song", artist: "Artist 2"),
+                SongViewModel(title: "Nasty Song", artist: "Artist 2")
+                ])
+            self.viewInterface?.viewShouldUpdate(with: viewModel)
+        }
     }
     
     func viewNeedsUpdatedData() {

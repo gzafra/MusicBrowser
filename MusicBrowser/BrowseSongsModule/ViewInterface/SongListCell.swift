@@ -9,19 +9,19 @@
 import UIKit
 
 class SongListCell: UITableViewCell {
-    static var identifier : String = {
-        return String(describing: self)
-    }()
+    static var identifier : String = "SongListCell"
     
+    @IBOutlet weak var songTitleLabel: UILabel!
+    @IBOutlet weak var songArtistLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func setup(with viewModel: SongViewModel) {
+        songTitleLabel.text = viewModel.title
+        songArtistLabel.text = viewModel.artist
     }
     
 }

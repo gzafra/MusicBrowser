@@ -14,6 +14,7 @@ protocol BrowseSongsInteractorProtocol: class {
 
 protocol BrowseSongsPresenterProtocol: class {
     var interactor: BrowseSongsInteractorProtocol { get }
+    var viewInterface: BrowseSongsViewInterface? { get set }
     func viewDidLoad()
     func viewNeedsUpdatedData()
 }

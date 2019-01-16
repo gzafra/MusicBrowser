@@ -9,13 +9,28 @@
 import UIKit
 
 class BrowseSongsViewController: UIViewController {
+    
+    // MARK: - Layout
+    private enum Layout {
+        static let searchBarHeight: CGFloat = 50.0
+        static let sortBySelectorHeight: CGFloat = 30.0
+    }
+    
+    
+    // MARK: - Properties
+    
     var presenter: BrowseSongsPresenterProtocol
     var router: BrowseSongsRouterProtocol
     
     // Outlets
-    private var tableView = UITableView(frame: .zero, style: .grouped)
-    private var searchBar = UISearchBar(frame: .zero)
+    private var tableView = UITableView()
+    private var searchBar = UISearchBar()
     private var refreshControl = UIRefreshControl()
+    lazy private var sortBySelector: UISegmentedControl = {
+        let control = UISegmentedControl(items: [
+            "Price", "Hander", "Mander"])
+        return control
+    }()
     internal var viewModel: BrowseSongsViewModel?
 
     // MARK: - Lifecycle
@@ -23,7 +38,6 @@ class BrowseSongsViewController: UIViewController {
         self.presenter = presenter
         self.router = router
         super.init(nibName: nil, bundle: nil)
-        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,35 +46,79 @@ class BrowseSongsViewController: UIViewController {
     
     func commonInit() {
         view.backgroundColor = .white
+        extendedLayoutIncludesOpaqueBars = false
+        edgesForExtendedLayout = []
         setupTableView()
+        setupSearchBar()
+        setupSortSelector()
+        setupConstraints()
     }
     
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
-        tableView.register(SongListCell.self, forCellReuseIdentifier: SongListCell.identifier)
+        tableView.register(UINib(nibName: SongListCell.identifier, bundle: nil), forCellReuseIdentifier: SongListCell.identifier)
         view.addSubview(tableView)
-        
-        
     }
     
     private func setupSearchBar() {
+        view.addSubview(searchBar)
+        searchBar.delegate = self
+    }
+    
+    private func setupSortSelector() {
+        view.addSubview(sortBySelector)
+        sortBySelector.addTarget(self, action: #selector(indexChanged(_:)), for: .valueChanged)
+    }
+    
+    private func setupConstraints() {
+        // Vertical
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        searchBar.heightAnchor.constraint(equalToConstant: Layout.searchBarHeight).isActive = true
+        sortBySelector.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.bottomAnchor.constraint(equalTo: sortBySelector.topAnchor).isActive = true
+        sortBySelector.heightAnchor.constraint(equalToConstant: Layout.sortBySelectorHeight).isActive = true
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        sortBySelector.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
+        // Horizontal
+        searchBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        searchBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        sortBySelector.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        sortBySelector.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        commonInit()
         refreshControl.beginRefreshing()
         presenter.viewDidLoad()
+    }
+    
+    @objc func indexChanged(_ sender: AnyObject) {
+        switch sortBySelector.selectedSegmentIndex
+        {
+        case 0:
+            break
+        case 1:
+            break
+        default:
+            break
+        }
     }
 
 }
 
+// MARK: - Table View
+
 extension BrowseSongsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return UITableView.automaticDimension
     }
 }
 
@@ -74,14 +132,40 @@ extension BrowseSongsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SongListCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: SongListCell.identifier, for: indexPath) as! SongListCell
         
         guard let cellViewModel = viewModel?.songs[indexPath.row] else { return cell }
+        cell.setup(with: cellViewModel)
 
-        // TODO: Generate cell with view model data
         return cell
     }
 }
+
+// MARK: - Search
+
+extension BrowseSongsViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+     
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+       
+        searchBar.resignFirstResponder()
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+    }
+}
+
+// MARK: - Presentation
 
 extension BrowseSongsViewController: BrowseSongsViewInterface {
     func viewShouldUpdate(with viewModel: BrowseSongsViewModel) {
