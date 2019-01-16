@@ -13,6 +13,14 @@
 		B606D12821EF69920072FFDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B606D12721EF69920072FFDB /* Assets.xcassets */; };
 		B606D12B21EF69920072FFDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B606D12921EF69920072FFDB /* LaunchScreen.storyboard */; };
 		B606D13621EF69930072FFDB /* MusicBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D13521EF69930072FFDB /* MusicBrowserTests.swift */; };
+		B606D14721EF6AC40072FFDB /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D14621EF6AC40072FFDB /* RequestProtocol.swift */; };
+		B606D14921EF6ADA0072FFDB /* RequestManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D14821EF6ADA0072FFDB /* RequestManagerProtocol.swift */; };
+		B606D14B21EF6AF50072FFDB /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D14A21EF6AF50072FFDB /* Result.swift */; };
+		B606D14D21EF6B1B0072FFDB /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D14C21EF6B1B0072FFDB /* RequestManager.swift */; };
+		B606D14F21EF6B380072FFDB /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D14E21EF6B380072FFDB /* EndpointProtocol.swift */; };
+		B606D15121EF6B490072FFDB /* ResultError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D15021EF6B490072FFDB /* ResultError.swift */; };
+		B606D15321EF6B5B0072FFDB /* HTTPCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D15221EF6B5B0072FFDB /* HTTPCode.swift */; };
+		B606D15621EF6B8E0072FFDB /* LayoutExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D15521EF6B8E0072FFDB /* LayoutExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +44,14 @@
 		B606D13121EF69920072FFDB /* MusicBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B606D13521EF69930072FFDB /* MusicBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBrowserTests.swift; sourceTree = "<group>"; };
 		B606D13721EF69930072FFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B606D14621EF6AC40072FFDB /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		B606D14821EF6ADA0072FFDB /* RequestManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManagerProtocol.swift; sourceTree = "<group>"; };
+		B606D14A21EF6AF50072FFDB /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		B606D14C21EF6B1B0072FFDB /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		B606D14E21EF6B380072FFDB /* EndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocol.swift; sourceTree = "<group>"; };
+		B606D15021EF6B490072FFDB /* ResultError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultError.swift; sourceTree = "<group>"; };
+		B606D15221EF6B5B0072FFDB /* HTTPCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCode.swift; sourceTree = "<group>"; };
+		B606D15521EF6B8E0072FFDB /* LayoutExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +93,10 @@
 		B606D11F21EF69910072FFDB /* MusicBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				B606D14321EF6A600072FFDB /* SongDetailModule */,
+				B606D14221EF6A200072FFDB /* BrowseSongsModule */,
+				B606D14121EF6A190072FFDB /* Common */,
+				B606D14021EF6A110072FFDB /* Resources */,
 				B606D12021EF69910072FFDB /* AppDelegate.swift */,
 				B606D12221EF69910072FFDB /* ViewController.swift */,
 				B606D12421EF69910072FFDB /* Main.storyboard */,
@@ -94,6 +114,74 @@
 				B606D13721EF69930072FFDB /* Info.plist */,
 			);
 			path = MusicBrowserTests;
+			sourceTree = "<group>";
+		};
+		B606D14021EF6A110072FFDB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B606D14121EF6A190072FFDB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B606D15421EF6B7C0072FFDB /* Extensions */,
+				B606D14421EF6AA70072FFDB /* Network */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B606D14221EF6A200072FFDB /* BrowseSongsModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BrowseSongsModule;
+			sourceTree = "<group>";
+		};
+		B606D14321EF6A600072FFDB /* SongDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SongDetailModule;
+			sourceTree = "<group>";
+		};
+		B606D14421EF6AA70072FFDB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B606D14521EF6AAD0072FFDB /* Protocols */,
+				B606D14A21EF6AF50072FFDB /* Result.swift */,
+				B606D14C21EF6B1B0072FFDB /* RequestManager.swift */,
+				B606D15021EF6B490072FFDB /* ResultError.swift */,
+				B606D15221EF6B5B0072FFDB /* HTTPCode.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B606D14521EF6AAD0072FFDB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B606D14621EF6AC40072FFDB /* RequestProtocol.swift */,
+				B606D14821EF6ADA0072FFDB /* RequestManagerProtocol.swift */,
+				B606D14E21EF6B380072FFDB /* EndpointProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B606D15421EF6B7C0072FFDB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B606D15721EF6B940072FFDB /* UIView */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B606D15721EF6B940072FFDB /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				B606D15521EF6B8E0072FFDB /* LayoutExtensions.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +285,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B606D14721EF6AC40072FFDB /* RequestProtocol.swift in Sources */,
+				B606D15321EF6B5B0072FFDB /* HTTPCode.swift in Sources */,
+				B606D14B21EF6AF50072FFDB /* Result.swift in Sources */,
+				B606D14921EF6ADA0072FFDB /* RequestManagerProtocol.swift in Sources */,
+				B606D14D21EF6B1B0072FFDB /* RequestManager.swift in Sources */,
 				B606D12321EF69910072FFDB /* ViewController.swift in Sources */,
+				B606D15121EF6B490072FFDB /* ResultError.swift in Sources */,
+				B606D15621EF6B8E0072FFDB /* LayoutExtensions.swift in Sources */,
 				B606D12121EF69910072FFDB /* AppDelegate.swift in Sources */,
+				B606D14F21EF6B380072FFDB /* EndpointProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
