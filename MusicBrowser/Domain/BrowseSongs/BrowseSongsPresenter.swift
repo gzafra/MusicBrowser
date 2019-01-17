@@ -8,7 +8,8 @@
 
 import Foundation
 
-class BrowseSongsPresenter {
+class BrowseSongsPresenter: BrowseSongsPresenterProtocol {
+    
     var interactor: BrowseSongsInteractorProtocol
     var router: BrowseSongsRouterProtocol
     weak var viewInterface: BrowseSongsViewInterface?
@@ -17,19 +18,17 @@ class BrowseSongsPresenter {
         self.interactor = interactor
         self.router = router
     }
-}
-
-extension BrowseSongsPresenter: BrowseSongsPresenterProtocol {
-
+    
+    // MARK: - BrowseSongsPresenterProtocol
     func viewDidLoad() {
-        // TODO: Show empty view, preloaded data, ...
+        viewInterface?.viewShouldUpdate(with: generateSongsViewModel(for: []))
     }
     
     func userSearched(string: String) {
         let terms: [String] = string.components(separatedBy: [" ", ","])
         interactor.seachSongs(with: terms, successBlock: { [weak self] (response) in
             guard let self = self else { return }
-            let viewModel = self.generateSongsViewModel(for: response)
+            let viewModel = self.generateSongsViewModel(for: response.results)
             self.viewInterface?.viewShouldUpdate(with: viewModel)
         }) { [weak self] in
             self?.viewInterface?.showError(message: "Failed to load data")
@@ -44,12 +43,16 @@ extension BrowseSongsPresenter: BrowseSongsPresenterProtocol {
         router.navigateToSongDetail(with: datasource)
     }
     
-    private func generateSongsViewModel(for data: SearchSongsResponse) -> BrowseSongsViewModel {
+    private func generateSongsViewModel(for data: [SongData]) -> BrowseSongsViewModel {
         
-        let songs = data.results.map{ song in
+        let songs = data.map{ song in
             return SongViewModel(title: song.trackName, artist: song.artistName)
         }
         return BrowseSongsViewModel(songs: songs)
     }
     
+    func sortOptionSelected(mode: SortOption) {
+        let viewModel = generateSongsViewModel(for: interactor.getSortedBy(sortOption: mode))
+        viewInterface?.viewShouldUpdate(with: viewModel)
+    }
 }

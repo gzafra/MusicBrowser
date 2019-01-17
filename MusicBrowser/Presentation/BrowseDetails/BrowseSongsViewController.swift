@@ -8,12 +8,13 @@
 
 import UIKit
 
-class BrowseSongsViewController: UIViewController {
+class BrowseSongsViewController: UIViewController, BrowseSongsViewInterface, LoadingViewController {
     
     // MARK: - Layout
     private enum Layout {
         static let searchBarHeight: CGFloat = 50.0
         static let sortBySelectorHeight: CGFloat = 30.0
+        static let sortBySelectorRightPadding: CGFloat = -24
     }
     
     
@@ -24,11 +25,13 @@ class BrowseSongsViewController: UIViewController {
     // Outlets
     private var tableView = UITableView()
     private var searchBar = UISearchBar()
-    private var refreshControl = UIRefreshControl()
-    lazy private var sortBySelector: UISegmentedControl = {
-        let control = UISegmentedControl(items: [
-            "Price", "Hander", "Mander"])
-        return control
+    internal var loadingView = LoadingView(frame: .zero)
+    lazy private var sortByButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Sort By...", for: .normal)
+        button.titleLabel?.textAlignment = .right
+        button.isEnabled = false
+        return button
     }()
     internal var viewModel: BrowseSongsViewModel?
 
@@ -46,7 +49,11 @@ class BrowseSongsViewController: UIViewController {
         view.backgroundColor = .white
         extendedLayoutIncludesOpaqueBars = false
         edgesForExtendedLayout = []
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.isTranslucent = false
         title = "Browse Songs"
+        
+        // Others
         setupTableView()
         setupSearchBar()
         setupSortSelector()
@@ -62,12 +69,13 @@ class BrowseSongsViewController: UIViewController {
     
     private func setupSearchBar() {
         view.addSubview(searchBar)
+        searchBar.searchBarStyle = .minimal
         searchBar.delegate = self
     }
     
     private func setupSortSelector() {
-        view.addSubview(sortBySelector)
-        sortBySelector.addTarget(self, action: #selector(indexChanged(_:)), for: .valueChanged)
+        view.addSubview(sortByButton)
+        sortByButton.addTarget(self, action: #selector(sortByTapped), for: .touchUpInside)
     }
     
     private func setupConstraints() {
@@ -75,18 +83,17 @@ class BrowseSongsViewController: UIViewController {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         searchBar.heightAnchor.constraint(equalToConstant: Layout.searchBarHeight).isActive = true
-        sortBySelector.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.bottomAnchor.constraint(equalTo: sortBySelector.topAnchor).isActive = true
-        sortBySelector.heightAnchor.constraint(equalToConstant: Layout.sortBySelectorHeight).isActive = true
+        sortByButton.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.bottomAnchor.constraint(equalTo: sortByButton.topAnchor).isActive = true
+        sortByButton.heightAnchor.constraint(equalToConstant: Layout.sortBySelectorHeight).isActive = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        sortBySelector.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
+        sortByButton.bottomAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         // Horizontal
         searchBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         searchBar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        sortBySelector.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        sortBySelector.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        sortByButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: Layout.sortBySelectorRightPadding).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
@@ -94,22 +101,74 @@ class BrowseSongsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
-        refreshControl.beginRefreshing()
+
+        beginLoading()
         presenter.viewDidLoad()
     }
     
-    @objc func indexChanged(_ sender: AnyObject) {
-        switch sortBySelector.selectedSegmentIndex
-        {
-        case 0:
-            break
-        case 1:
-            break
-        default:
-            break
-        }
+    // MARK: - BrowseSongsViewInterface
+    
+    func viewShouldUpdate(with viewModel: BrowseSongsViewModel) {
+        self.viewModel = viewModel
+        tableView.reloadData()
+        endLoading()
+        sortByButton.isEnabled = viewModel.numberOfRows > 0
+    }
+    
+    func showError(message: String) {
+        endLoading()
+        UIAlertController.show(title: "Oops!", message: message, in: self)
     }
 
+    // MARK: - Sorting
+    
+    @objc func sortByTapped() {
+        let sortAlertController = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
+        let priceAscendingAction = UIAlertAction(title: "Price Ascending", style: .default) { [weak self] _ in
+            let option = SortOption(mode: .price, inverted: false )
+            self?.presenter.sortOptionSelected(mode: option)
+            self?.setupSortOptionButton(for: option)
+        }
+        let priceDescendingAction = UIAlertAction(title: "Price Descending", style: .default) { [weak self] _ in
+            let option = SortOption(mode: .price, inverted: true )
+            self?.presenter.sortOptionSelected(mode: option)
+            self?.setupSortOptionButton(for: option)
+        }
+        let genreAction = UIAlertAction(title: "Genre", style: .default) { [weak self] _ in
+            let option = SortOption(mode: .genre, inverted: false )
+            self?.presenter.sortOptionSelected(mode: option)
+            self?.setupSortOptionButton(for: option)
+        }
+        let lengthAscendingAction = UIAlertAction(title: "Length Ascending", style: .default) { [weak self] _ in
+            let option = SortOption(mode: .length, inverted: false )
+            self?.presenter.sortOptionSelected(mode: option)
+            self?.setupSortOptionButton(for: option)
+        }
+        let lengthDescendingAction = UIAlertAction(title: "Length Descending", style: .default) { [weak self] _ in
+            let option = SortOption(mode: .length, inverted: true )
+            self?.presenter.sortOptionSelected(mode: option)
+            self?.setupSortOptionButton(for: option)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        sortAlertController.addAction(priceAscendingAction)
+        sortAlertController.addAction(priceDescendingAction)
+        sortAlertController.addAction(lengthAscendingAction)
+        sortAlertController.addAction(lengthDescendingAction)
+        sortAlertController.addAction(genreAction)
+        sortAlertController.addAction(cancelAction)
+        self.present(sortAlertController, animated: true, completion: nil)
+    }
+    
+    private func setupSortOptionButton(for option: SortOption?) {
+        if let _ = option {
+            sortByButton.isSelected = true
+            sortByButton.setTitle("Sorted", for: .selected)
+        }else{
+            sortByButton.isSelected = false
+        }
+    }
 }
 
 // MARK: - Table View
@@ -154,20 +213,8 @@ extension BrowseSongsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let searchedString = searchBar.text else { return }
+        beginLoading()
+        setupSortOptionButton(for: nil) // Reset sort option
         presenter.userSearched(string: searchedString)
     }
-}
-
-// MARK: - Presentation
-
-extension BrowseSongsViewController: BrowseSongsViewInterface {
-    func viewShouldUpdate(with viewModel: BrowseSongsViewModel) {
-        self.viewModel = viewModel
-        tableView.reloadData()
-    }
-    
-    func showError(message: String) {
-        UIAlertController.show(title: "Oops!", message: message, in: self)
-    }
-    
 }

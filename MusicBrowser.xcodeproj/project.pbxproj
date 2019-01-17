@@ -42,6 +42,10 @@
 		B606D19C21F07E950072FFDB /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D19B21F07E950072FFDB /* Images.swift */; };
 		B606D1A021F09C650072FFDB /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B606D19E21F09C650072FFDB /* AVKit.framework */; };
 		B606D1A121F09C650072FFDB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B606D19F21F09C650072FFDB /* AVFoundation.framework */; };
+		B606D1A421F0C6290072FFDB /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1A321F0C6290072FFDB /* SortOption.swift */; };
+		B606D1A821F0D2510072FFDB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1A621F0D2510072FFDB /* LoadingView.swift */; };
+		B606D1A921F0D2510072FFDB /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B606D1A721F0D2510072FFDB /* LoadingView.xib */; };
+		B606D1AB21F0D5420072FFDB /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1AA21F0D5420072FFDB /* LoadingViewController.swift */; };
 		B7A7A1D7DBCAC220C0C43D01 /* Pods_MusicBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F14CC794AD9995A4EDFACE /* Pods_MusicBrowser.framework */; };
 		D908FE8D9FF872EF5731EB98 /* Pods_MusicBrowserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C88F308113A32D8A9FCF5B /* Pods_MusicBrowserTests.framework */; };
 /* End PBXBuildFile section */
@@ -100,6 +104,10 @@
 		B606D19B21F07E950072FFDB /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B606D19E21F09C650072FFDB /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		B606D19F21F09C650072FFDB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B606D1A321F0C6290072FFDB /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
+		B606D1A621F0D2510072FFDB /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		B606D1A721F0D2510072FFDB /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		B606D1AA21F0D5420072FFDB /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		C6C88F308113A32D8A9FCF5B /* Pods_MusicBrowserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicBrowserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12131A729466857873E8CE3 /* Pods-MusicBrowserTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicBrowserTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicBrowserTests/Pods-MusicBrowserTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +200,7 @@
 		B606D14121EF6A190072FFDB /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B606D1A521F0D2320072FFDB /* Views */,
 				B606D15421EF6B7C0072FFDB /* Extensions */,
 			);
 			path = Common;
@@ -222,6 +231,7 @@
 			children = (
 				B606D17921EF9FF00072FFDB /* UIAlert */,
 				B606D15721EF6B940072FFDB /* UIView */,
+				B606D1AA21F0D5420072FFDB /* LoadingViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -314,6 +324,7 @@
 		B606D19421F06F320072FFDB /* BrowseDetails */ = {
 			isa = PBXGroup;
 			children = (
+				B606D1A221F0C61A0072FFDB /* Sorting */,
 				B606D19721F070D90072FFDB /* ViewModel */,
 				B606D16821EF6DBA0072FFDB /* BrowseSongsViewController.swift */,
 				B606D16A21EF6E4F0072FFDB /* SongListCell.swift */,
@@ -367,6 +378,23 @@
 				C6C88F308113A32D8A9FCF5B /* Pods_MusicBrowserTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B606D1A221F0C61A0072FFDB /* Sorting */ = {
+			isa = PBXGroup;
+			children = (
+				B606D1A321F0C6290072FFDB /* SortOption.swift */,
+			);
+			path = Sorting;
+			sourceTree = "<group>";
+		};
+		B606D1A521F0D2320072FFDB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B606D1A621F0D2510072FFDB /* LoadingView.swift */,
+				B606D1A721F0D2510072FFDB /* LoadingView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,6 +484,7 @@
 				B606D16D21EF6E4F0072FFDB /* SongListCell.xib in Resources */,
 				B606D12B21EF69920072FFDB /* LaunchScreen.storyboard in Resources */,
 				B606D12821EF69920072FFDB /* Assets.xcassets in Resources */,
+				B606D1A921F0D2510072FFDB /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +577,7 @@
 				B606D17021EF73050072FFDB /* BrowseSongsRouter.swift in Sources */,
 				B606D15F21EF6CA20072FFDB /* SongData.swift in Sources */,
 				B606D19C21F07E950072FFDB /* Images.swift in Sources */,
+				B606D1A421F0C6290072FFDB /* SortOption.swift in Sources */,
 				B606D17721EF95300072FFDB /* SearchSongsResponse.swift in Sources */,
 				B606D15321EF6B5B0072FFDB /* HTTPCode.swift in Sources */,
 				B606D14B21EF6AF50072FFDB /* Result.swift in Sources */,
@@ -560,6 +590,7 @@
 				B606D15C21EF6C480072FFDB /* BrowseSongsInteractor.swift in Sources */,
 				B606D18121EFB57A0072FFDB /* SongDetailProtocols.swift in Sources */,
 				B606D15921EF6C1C0072FFDB /* BrowseSongsProtocols.swift in Sources */,
+				B606D1AB21F0D5420072FFDB /* LoadingViewController.swift in Sources */,
 				B606D15121EF6B490072FFDB /* ResultError.swift in Sources */,
 				B606D15621EF6B8E0072FFDB /* LayoutExtensions.swift in Sources */,
 				B606D16C21EF6E4F0072FFDB /* SongListCell.swift in Sources */,
@@ -567,6 +598,7 @@
 				B606D18521EFB6800072FFDB /* SongDetailInteractor.swift in Sources */,
 				B606D17B21EFA0020072FFDB /* UIAlertControllerExtensions.swift in Sources */,
 				B606D14F21EF6B380072FFDB /* EndpointProtocol.swift in Sources */,
+				B606D1A821F0D2510072FFDB /* LoadingView.swift in Sources */,
 				B606D16521EF6D3B0072FFDB /* BrowseSongsViewModel.swift in Sources */,
 				B606D19A21F072540072FFDB /* SongListDataSource.swift in Sources */,
 				B606D16321EF6D320072FFDB /* BrowseSongsPresenter.swift in Sources */,

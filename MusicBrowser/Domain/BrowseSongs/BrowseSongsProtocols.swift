@@ -11,6 +11,7 @@ import UIKit
 protocol BrowseSongsInteractorProtocol: class {
     func seachSongs(with terms: [String], successBlock: @escaping SearchSongsCompletion, failureBlock: @escaping () -> ())
     func getSongList(with selectedIndex: Int) -> SongListDataSource?
+    func getSortedBy(sortOption: SortOption) -> [SongData]
 }
 
 protocol BrowseSongsPresenterProtocol: class {
@@ -21,6 +22,7 @@ protocol BrowseSongsPresenterProtocol: class {
     func viewDidLoad()
     func userSearched(string: String)
     func selectedCell(at index: Int)
+    func sortOptionSelected(mode: SortOption)
 }
 
 protocol BrowseSongsViewInterface: class {

@@ -18,7 +18,8 @@ struct SearchSongsRequest: RequestProtocol {
     var completion: ((Result<SearchSongsResponse>) -> Void)?
     
     var queryString: [String : String]? {
-        return ["term": terms.joined(separator: "+")]
+        return ["term": terms.joined(separator: "+"),
+                "media": "music"]
     }
     
     let terms: [String]
