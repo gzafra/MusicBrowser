@@ -23,7 +23,7 @@ class BrowseSongsViewController: UIViewController, BrowseSongsViewInterface, Loa
     var presenter: BrowseSongsPresenterProtocol
     
     // Outlets
-    private var tableView = UITableView()
+    internal var tableView = UITableView()
     private var searchBar = UISearchBar()
     internal var loadingView = LoadingView(frame: .zero)
     lazy private var sortByButton: UIButton = {

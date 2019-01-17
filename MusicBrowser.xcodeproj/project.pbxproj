@@ -10,7 +10,7 @@
 		B606D12121EF69910072FFDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D12021EF69910072FFDB /* AppDelegate.swift */; };
 		B606D12821EF69920072FFDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B606D12721EF69920072FFDB /* Assets.xcassets */; };
 		B606D12B21EF69920072FFDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B606D12921EF69920072FFDB /* LaunchScreen.storyboard */; };
-		B606D13621EF69930072FFDB /* MusicBrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D13521EF69930072FFDB /* MusicBrowserTests.swift */; };
+		B606D13621EF69930072FFDB /* BrowseSongsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D13521EF69930072FFDB /* BrowseSongsInteractorTests.swift */; };
 		B606D14721EF6AC40072FFDB /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D14621EF6AC40072FFDB /* RequestProtocol.swift */; };
 		B606D14921EF6ADA0072FFDB /* RequestManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D14821EF6ADA0072FFDB /* RequestManagerProtocol.swift */; };
 		B606D14B21EF6AF50072FFDB /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D14A21EF6AF50072FFDB /* Result.swift */; };
@@ -49,6 +49,13 @@
 		B606D1AE21F0E0BA0072FFDB /* NumberFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1AD21F0E0BA0072FFDB /* NumberFormatterHelper.swift */; };
 		B606D1B021F0E0E60072FFDB /* DateFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1AF21F0E0E60072FFDB /* DateFormatterHelper.swift */; };
 		B606D1B221F0ECC20072FFDB /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1B121F0ECC20072FFDB /* LocalizedStrings.swift */; };
+		B606D1B521F0F1C00072FFDB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1B421F0F1C00072FFDB /* Extensions.swift */; };
+		B606D1B821F0F1FD0072FFDB /* MockRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1B721F0F1FD0072FFDB /* MockRequestManager.swift */; };
+		B606D1BB21F0F26A0072FFDB /* iTunesSearch.json in Resources */ = {isa = PBXBuildFile; fileRef = B606D1BA21F0F26A0072FFDB /* iTunesSearch.json */; };
+		B606D1C021F0F7AE0072FFDB /* BrowseSongsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1BF21F0F7AE0072FFDB /* BrowseSongsPresenterTests.swift */; };
+		B606D1C221F0F7D80072FFDB /* BrowseSongsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1C121F0F7D80072FFDB /* BrowseSongsViewControllerTests.swift */; };
+		B606D1C521F104DB0072FFDB /* BrowseSongsViewInterfaceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1C421F104DB0072FFDB /* BrowseSongsViewInterfaceMock.swift */; };
+		B606D1C721F10A1B0072FFDB /* BrowseSongsRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1C621F10A1B0072FFDB /* BrowseSongsRouterMock.swift */; };
 		B7A7A1D7DBCAC220C0C43D01 /* Pods_MusicBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F14CC794AD9995A4EDFACE /* Pods_MusicBrowser.framework */; };
 		D908FE8D9FF872EF5731EB98 /* Pods_MusicBrowserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C88F308113A32D8A9FCF5B /* Pods_MusicBrowserTests.framework */; };
 /* End PBXBuildFile section */
@@ -74,7 +81,7 @@
 		B606D12A21EF69920072FFDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B606D12C21EF69920072FFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B606D13121EF69920072FFDB /* MusicBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B606D13521EF69930072FFDB /* MusicBrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBrowserTests.swift; sourceTree = "<group>"; };
+		B606D13521EF69930072FFDB /* BrowseSongsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSongsInteractorTests.swift; sourceTree = "<group>"; };
 		B606D13721EF69930072FFDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B606D14621EF6AC40072FFDB /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		B606D14821EF6ADA0072FFDB /* RequestManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManagerProtocol.swift; sourceTree = "<group>"; };
@@ -114,6 +121,13 @@
 		B606D1AD21F0E0BA0072FFDB /* NumberFormatterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterHelper.swift; sourceTree = "<group>"; };
 		B606D1AF21F0E0E60072FFDB /* DateFormatterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterHelper.swift; sourceTree = "<group>"; };
 		B606D1B121F0ECC20072FFDB /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
+		B606D1B421F0F1C00072FFDB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B606D1B721F0F1FD0072FFDB /* MockRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRequestManager.swift; sourceTree = "<group>"; };
+		B606D1BA21F0F26A0072FFDB /* iTunesSearch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = iTunesSearch.json; sourceTree = "<group>"; };
+		B606D1BF21F0F7AE0072FFDB /* BrowseSongsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSongsPresenterTests.swift; sourceTree = "<group>"; };
+		B606D1C121F0F7D80072FFDB /* BrowseSongsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSongsViewControllerTests.swift; sourceTree = "<group>"; };
+		B606D1C421F104DB0072FFDB /* BrowseSongsViewInterfaceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSongsViewInterfaceMock.swift; sourceTree = "<group>"; };
+		B606D1C621F10A1B0072FFDB /* BrowseSongsRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSongsRouterMock.swift; sourceTree = "<group>"; };
 		C6C88F308113A32D8A9FCF5B /* Pods_MusicBrowserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicBrowserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12131A729466857873E8CE3 /* Pods-MusicBrowserTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicBrowserTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicBrowserTests/Pods-MusicBrowserTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,7 +201,11 @@
 		B606D13421EF69930072FFDB /* MusicBrowserTests */ = {
 			isa = PBXGroup;
 			children = (
-				B606D13521EF69930072FFDB /* MusicBrowserTests.swift */,
+				B606D1BE21F0F2C70072FFDB /* SongDetailsTests */,
+				B606D1BD21F0F2BC0072FFDB /* CommonTests */,
+				B606D1BC21F0F2B50072FFDB /* BrowseSongsTests */,
+				B606D1B621F0F1D00072FFDB /* Mock */,
+				B606D1B321F0F1AB0072FFDB /* Extensions */,
 				B606D13721EF69930072FFDB /* Info.plist */,
 			);
 			path = MusicBrowserTests;
@@ -414,6 +432,65 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
+		B606D1B321F0F1AB0072FFDB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B606D1B421F0F1C00072FFDB /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B606D1B621F0F1D00072FFDB /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				B606D1B921F0F23F0072FFDB /* JSON */,
+				B606D1B721F0F1FD0072FFDB /* MockRequestManager.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		B606D1B921F0F23F0072FFDB /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				B606D1BA21F0F26A0072FFDB /* iTunesSearch.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		B606D1BC21F0F2B50072FFDB /* BrowseSongsTests */ = {
+			isa = PBXGroup;
+			children = (
+				B606D1C321F104C50072FFDB /* Mock */,
+				B606D13521EF69930072FFDB /* BrowseSongsInteractorTests.swift */,
+				B606D1BF21F0F7AE0072FFDB /* BrowseSongsPresenterTests.swift */,
+				B606D1C121F0F7D80072FFDB /* BrowseSongsViewControllerTests.swift */,
+			);
+			path = BrowseSongsTests;
+			sourceTree = "<group>";
+		};
+		B606D1BD21F0F2BC0072FFDB /* CommonTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CommonTests;
+			sourceTree = "<group>";
+		};
+		B606D1BE21F0F2C70072FFDB /* SongDetailsTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SongDetailsTests;
+			sourceTree = "<group>";
+		};
+		B606D1C321F104C50072FFDB /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				B606D1C421F104DB0072FFDB /* BrowseSongsViewInterfaceMock.swift */,
+				B606D1C621F10A1B0072FFDB /* BrowseSongsRouterMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -509,6 +586,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B606D1BB21F0F26A0072FFDB /* iTunesSearch.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,7 +708,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B606D13621EF69930072FFDB /* MusicBrowserTests.swift in Sources */,
+				B606D13621EF69930072FFDB /* BrowseSongsInteractorTests.swift in Sources */,
+				B606D1C021F0F7AE0072FFDB /* BrowseSongsPresenterTests.swift in Sources */,
+				B606D1C221F0F7D80072FFDB /* BrowseSongsViewControllerTests.swift in Sources */,
+				B606D1B821F0F1FD0072FFDB /* MockRequestManager.swift in Sources */,
+				B606D1B521F0F1C00072FFDB /* Extensions.swift in Sources */,
+				B606D1C721F10A1B0072FFDB /* BrowseSongsRouterMock.swift in Sources */,
+				B606D1C521F104DB0072FFDB /* BrowseSongsViewInterfaceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
