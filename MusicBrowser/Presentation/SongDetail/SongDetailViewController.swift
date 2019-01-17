@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SongDetailViewController: UIViewController, SongDetailViewInterface {
     
@@ -24,7 +25,11 @@ class SongDetailViewController: UIViewController, SongDetailViewInterface {
     // MARK: - Outlets
     var songTitleLabel = UILabel()
     var artistNameLabel = UILabel()
-    var coverImage = UIImageView()
+    lazy var coverImage: UIImageView = {
+       let imageView = UIImageView()
+        imageView.backgroundColor = .lightGray
+        return imageView
+    }()
     lazy var prevButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.custom)
         button.setImage(Images.prevIcon.image, for: .normal)
@@ -125,9 +130,14 @@ class SongDetailViewController: UIViewController, SongDetailViewInterface {
     // MARK: - SongDetailViewInterface
     
     func viewShouldUpdate(with viewModel: SongDetailViewModel) {
+        
         songTitleLabel.text = viewModel.songTitle
         artistNameLabel.text = viewModel.songArtist
-        coverImage.backgroundColor = .yellow
+        
+        coverImage.image = nil
+        if let url = URL(string: viewModel.coverURL) {
+            coverImage.kf.setImage(with: url)
+        }
         
         prevButton.isEnabled = viewModel.hasPrev
         nextButton.isEnabled = viewModel.hasNext
