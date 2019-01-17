@@ -20,12 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func presentInitialViewController() {
-        guard let initialVC = BrowseSongsRouter.setupModule() as? UIViewController else {
+        let navigationController = UINavigationController()
+        guard let initialVC = BrowseSongsRouter.setupModule(with: navigationController) as? UIViewController else {
             assertionFailure("Could not load initial ViewController")
             return
         }
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController(rootViewController: initialVC)
+        navigationController.viewControllers = [initialVC]
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

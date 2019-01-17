@@ -37,7 +37,11 @@ extension BrowseSongsPresenter: BrowseSongsPresenterProtocol {
     }
     
     func selectedCell(at index: Int) {
-        
+        guard let datasource = interactor.getSongList(with: index) else {
+            viewInterface?.showError(message: "Could not select song")
+            return
+        }
+        router.navigateToSongDetail(with: datasource)
     }
     
     private func generateSongsViewModel(for data: SearchSongsResponse) -> BrowseSongsViewModel {

@@ -9,13 +9,22 @@
 import Foundation
 
 protocol SongDetailInteractorProtocol: class {
-    
+    func getCurrentSong() -> (data: SongData, state: SongState, next: SongData?, prev: SongData?)
+    func skipNextSong() -> (data: SongData, state: SongState, next: SongData?, prev: SongData?)?
+    func skipPreviousSong() -> (data: SongData, state: SongState, next: SongData?, prev: SongData?)?
+    func playSong()
+    var delegate: SongDetailInteractorDelegate? { get set }
+}
+
+protocol SongDetailInteractorDelegate: class {
+    func didChangeState(_ songState: SongState)
 }
 
 protocol SongDetailPresenterProtocol: class {
     var interactor: SongDetailInteractorProtocol { get }
     var viewInterface: SongDetailViewInterface? { get set }
     func viewDidLoad()
+    func didAction(button: SongControlButton)
 }
 
 protocol SongDetailViewInterface: class {
@@ -26,7 +35,5 @@ protocol SongDetailViewInterface: class {
 }
 
 protocol SongDetailRouterProtocol: class {
-    static func setupModule() -> SongDetailViewInterface
-    func navigateToNextSong()
-    func navigatoToPrevSong()
+    static func setupModule(with dataSource: SongListDataSource) -> SongDetailViewInterface
 }

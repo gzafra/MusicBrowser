@@ -8,4 +8,13 @@
 
 import Foundation
 
-struct SongDetailViewModel {}
+struct SongDetailViewModel {
+    let songTitle: String
+    let songArtist: String
+    let coverURL: String
+    let previewURL: String
+    
+    let hasNext: Bool
+    let hasPrev: Bool
+    let isPlaying: Bool
+}

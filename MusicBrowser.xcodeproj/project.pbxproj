@@ -38,6 +38,10 @@
 		B606D18721EFB75D0072FFDB /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D18621EFB75D0072FFDB /* SongDetailViewController.swift */; };
 		B606D18921EFB77E0072FFDB /* SongDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D18821EFB77E0072FFDB /* SongDetailRouter.swift */; };
 		B606D18B21EFB7DA0072FFDB /* SongDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D18A21EFB7DA0072FFDB /* SongDetailPresenter.swift */; };
+		B606D19A21F072540072FFDB /* SongListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D19921F072540072FFDB /* SongListDataSource.swift */; };
+		B606D19C21F07E950072FFDB /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D19B21F07E950072FFDB /* Images.swift */; };
+		B606D1A021F09C650072FFDB /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B606D19E21F09C650072FFDB /* AVKit.framework */; };
+		B606D1A121F09C650072FFDB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B606D19F21F09C650072FFDB /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +90,10 @@
 		B606D18621EFB75D0072FFDB /* SongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
 		B606D18821EFB77E0072FFDB /* SongDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailRouter.swift; sourceTree = "<group>"; };
 		B606D18A21EFB7DA0072FFDB /* SongDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailPresenter.swift; sourceTree = "<group>"; };
+		B606D19921F072540072FFDB /* SongListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListDataSource.swift; sourceTree = "<group>"; };
+		B606D19B21F07E950072FFDB /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		B606D19E21F09C650072FFDB /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		B606D19F21F09C650072FFDB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B606D1A021F09C650072FFDB /* AVKit.framework in Frameworks */,
+				B606D1A121F09C650072FFDB /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +122,7 @@
 				B606D11F21EF69910072FFDB /* MusicBrowser */,
 				B606D13421EF69930072FFDB /* MusicBrowserTests */,
 				B606D11E21EF69910072FFDB /* Products */,
+				B606D19D21F09C650072FFDB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +162,7 @@
 			children = (
 				B606D12721EF69920072FFDB /* Assets.xcassets */,
 				B606D12921EF69920072FFDB /* LaunchScreen.storyboard */,
+				B606D19B21F07E950072FFDB /* Images.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -222,7 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				B606D19521F070680072FFDB /* Common */,
-				B606D19221F06E920072FFDB /* BroseSongs */,
+				B606D19221F06E920072FFDB /* BrowseSongs */,
 				B606D19121F06E7A0072FFDB /* SongDetail */,
 			);
 			path = Domain;
@@ -257,7 +269,7 @@
 			path = SongDetail;
 			sourceTree = "<group>";
 		};
-		B606D19221F06E920072FFDB /* BroseSongs */ = {
+		B606D19221F06E920072FFDB /* BrowseSongs */ = {
 			isa = PBXGroup;
 			children = (
 				B606D16F21EF73050072FFDB /* BrowseSongsRouter.swift */,
@@ -265,7 +277,7 @@
 				B606D15B21EF6C480072FFDB /* BrowseSongsInteractor.swift */,
 				B606D15821EF6C1C0072FFDB /* BrowseSongsProtocols.swift */,
 			);
-			path = BroseSongs;
+			path = BrowseSongs;
 			sourceTree = "<group>";
 		};
 		B606D19321F06F2B0072FFDB /* SongDetail */ = {
@@ -291,6 +303,7 @@
 		B606D19521F070680072FFDB /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B606D19921F072540072FFDB /* SongListDataSource.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -321,6 +334,15 @@
 				B606D18221EFB6460072FFDB /* SongDetailViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B606D19D21F09C650072FFDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B606D19F21F09C650072FFDB /* AVFoundation.framework */,
+				B606D19E21F09C650072FFDB /* AVKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +451,7 @@
 				B606D18721EFB75D0072FFDB /* SongDetailViewController.swift in Sources */,
 				B606D17021EF73050072FFDB /* BrowseSongsRouter.swift in Sources */,
 				B606D15F21EF6CA20072FFDB /* SongData.swift in Sources */,
+				B606D19C21F07E950072FFDB /* Images.swift in Sources */,
 				B606D17721EF95300072FFDB /* SearchSongsResponse.swift in Sources */,
 				B606D15321EF6B5B0072FFDB /* HTTPCode.swift in Sources */,
 				B606D14B21EF6AF50072FFDB /* Result.swift in Sources */,
@@ -449,6 +472,7 @@
 				B606D17B21EFA0020072FFDB /* UIAlertControllerExtensions.swift in Sources */,
 				B606D14F21EF6B380072FFDB /* EndpointProtocol.swift in Sources */,
 				B606D16521EF6D3B0072FFDB /* BrowseSongsViewModel.swift in Sources */,
+				B606D19A21F072540072FFDB /* SongListDataSource.swift in Sources */,
 				B606D16321EF6D320072FFDB /* BrowseSongsPresenter.swift in Sources */,
 				B606D17521EF91090072FFDB /* ITunesEndpoints.swift in Sources */,
 			);

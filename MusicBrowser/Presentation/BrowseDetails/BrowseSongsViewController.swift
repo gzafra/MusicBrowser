@@ -46,6 +46,7 @@ class BrowseSongsViewController: UIViewController {
         view.backgroundColor = .white
         extendedLayoutIncludesOpaqueBars = false
         edgesForExtendedLayout = []
+        title = "Browse Songs"
         setupTableView()
         setupSearchBar()
         setupSortSelector()
@@ -55,7 +56,6 @@ class BrowseSongsViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.allowsSelection = false
         tableView.register(UINib(nibName: SongListCell.identifier, bundle: nil), forCellReuseIdentifier: SongListCell.identifier)
         view.addSubview(tableView)
     }
@@ -120,7 +120,7 @@ extension BrowseSongsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        presenter.selectedCell(at: indexPath.row)
     }
 }
 

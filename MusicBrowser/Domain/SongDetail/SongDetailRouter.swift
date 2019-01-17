@@ -9,24 +9,17 @@
 import Foundation
 
 class SongDetailRouter: SongDetailRouterProtocol {
-    static func setupModule() -> SongDetailViewInterface {
-        // Init
-        let interactor = SongDetailInteractor()
+    static func setupModule(with dataSource: SongListDataSource) -> SongDetailViewInterface {
+
+        let interactor = SongDetailInteractor(dataSource: dataSource)
         let presenter = SongDetailPresenter(interactor: interactor)
+        interactor.delegate = presenter
         let router = SongDetailRouter()
         let viewInterface = SongDetailViewController(presenter: presenter, router: router)
         
         presenter.viewInterface = viewInterface
         
         return viewInterface
-    }
-    
-    func navigateToNextSong() {
-        
-    }
-    
-    func navigatoToPrevSong() {
-        
     }
 
 }

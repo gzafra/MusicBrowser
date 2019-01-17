@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum SongControlButton {
+    case play
+    case next
+    case prev
+}
+
 class SongDetailPresenter: SongDetailPresenterProtocol {
     var interactor: SongDetailInteractorProtocol
     var viewInterface: SongDetailViewInterface?
@@ -19,6 +25,38 @@ class SongDetailPresenter: SongDetailPresenterProtocol {
     }
     
     func viewDidLoad() {
+        let songData = interactor.getCurrentSong()
+        viewInterface?.viewShouldUpdate(with: generateViewModel(with: songData))
         
+    }
+    
+    private func generateViewModel(with song: CurrentSongData) -> SongDetailViewModel {
+        return SongDetailViewModel(songTitle: song.data.trackName,
+                                   songArtist: song.data.artistName,
+                                   coverURL: song.data.artworkUrl100,
+                                   previewURL: song.data.previewUrl,
+                                   hasNext: song.next != nil,
+                                   hasPrev: song.prev != nil,
+                                   isPlaying: song.state == .playing)
+    }
+    
+    func didAction(button: SongControlButton) {
+        switch button {
+        case .next:
+            guard let nextSong = interactor.skipNextSong() else { return }
+            viewInterface?.viewShouldUpdate(with: generateViewModel(with: nextSong))
+        case .prev:
+            guard let prevSong = interactor.skipPreviousSong() else { return }
+            viewInterface?.viewShouldUpdate(with: generateViewModel(with: prevSong))
+        case .play:
+            interactor.playSong()
+            viewInterface?.viewShouldUpdate(with: generateViewModel(with: interactor.getCurrentSong()))
+        }
+    }
+}
+
+extension SongDetailPresenter: SongDetailInteractorDelegate {
+    func didChangeState(_ songState: SongState) {
+        viewInterface?.viewShouldUpdate(with: generateViewModel(with: interactor.getCurrentSong()))
     }
 }

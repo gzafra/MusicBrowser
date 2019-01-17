@@ -9,7 +9,8 @@
 import UIKit
 
 protocol BrowseSongsInteractorProtocol: class {
-    func seachSongs(with terms: [String], successBlock: @escaping SearchSongsCompletion, failureBlock: @escaping () -> ()) 
+    func seachSongs(with terms: [String], successBlock: @escaping SearchSongsCompletion, failureBlock: @escaping () -> ())
+    func getSongList(with selectedIndex: Int) -> SongListDataSource?
 }
 
 protocol BrowseSongsPresenterProtocol: class {
@@ -29,6 +30,6 @@ protocol BrowseSongsViewInterface: class {
 }
 
 protocol BrowseSongsRouterProtocol: class {
-    static func setupModule() -> BrowseSongsViewInterface
-    func navigateToSongDetail(from navigationController: UINavigationController)
+    static func setupModule(with navigationController: UINavigationController) -> BrowseSongsViewInterface
+    func navigateToSongDetail(with dataSource: SongListDataSource)
 }

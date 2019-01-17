@@ -13,6 +13,7 @@ typealias SearchSongsCompletion = (SearchSongsResponse)->Void
 class BrowseSongsInteractor {
     // MARK: - Private properties
     private let requestManager: RequestManagerProtocol
+    fileprivate var songs: [SongData] = []
     
     init(requestManager: RequestManagerProtocol = RequestManager()) {
         self.requestManager = requestManager
@@ -25,6 +26,7 @@ extension BrowseSongsInteractor: BrowseSongsInteractorProtocol {
         request.completion = { result in
             switch result {
             case .success(let data):
+                self.songs = data.results
                 successBlock(data)
             case .failure(_):
                 failureBlock()
@@ -34,4 +36,8 @@ extension BrowseSongsInteractor: BrowseSongsInteractorProtocol {
         requestManager.send(request: request)
     }
     
+    func getSongList(with selectedIndex: Int) -> SongListDataSource? {
+        let dataSource = SongListDataSource(songs: songs, selectedIndex: selectedIndex)
+        return dataSource
+    }
 }

@@ -31,4 +31,10 @@ extension UIView {
         self.leftAnchor.constraint(equalTo: superView.leftAnchor).isActive = true
         self.rightAnchor.constraint(equalTo: superView.rightAnchor).isActive = true
     }
+    
+    func constraintSize(equalTo size: CGSize) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+        self.heightAnchor.constraint(equalToConstant: size.height).isActive = true
+    }
 }
