@@ -127,9 +127,9 @@
 		B606D11F21EF69910072FFDB /* MusicBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				B606D14321EF6A600072FFDB /* SongDetailModule */,
-				B606D14221EF6A200072FFDB /* BrowseSongsModule */,
-				B606D14121EF6A190072FFDB /* Common */,
+				B606D18E21F06E2D0072FFDB /* Data */,
+				B606D18D21F06E230072FFDB /* Domain */,
+				B606D18C21F06E1B0072FFDB /* Presentation */,
 				B606D14021EF6A110072FFDB /* Resources */,
 				B606D12021EF69910072FFDB /* AppDelegate.swift */,
 				B606D12C21EF69920072FFDB /* Info.plist */,
@@ -159,43 +159,16 @@
 			isa = PBXGroup;
 			children = (
 				B606D15421EF6B7C0072FFDB /* Extensions */,
-				B606D14421EF6AA70072FFDB /* Network */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		B606D14221EF6A200072FFDB /* BrowseSongsModule */ = {
-			isa = PBXGroup;
-			children = (
-				B606D16E21EF72F50072FFDB /* Router */,
-				B606D16121EF6D240072FFDB /* ViewInterface */,
-				B606D16021EF6D1E0072FFDB /* Presenter */,
-				B606D15A21EF6C390072FFDB /* Interactor */,
-				B606D15821EF6C1C0072FFDB /* BrowseSongsProtocols.swift */,
-			);
-			path = BrowseSongsModule;
-			sourceTree = "<group>";
-		};
-		B606D14321EF6A600072FFDB /* SongDetailModule */ = {
-			isa = PBXGroup;
-			children = (
-				B606D17F21EFB5680072FFDB /* Interactor */,
-				B606D17E21EFB5580072FFDB /* Presenter */,
-				B606D17D21EFB54F0072FFDB /* ViewInterface */,
-				B606D17C21EFB5450072FFDB /* Router */,
-				B606D18021EFB57A0072FFDB /* SongDetailProtocols.swift */,
-			);
-			path = SongDetailModule;
 			sourceTree = "<group>";
 		};
 		B606D14421EF6AA70072FFDB /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B606D14521EF6AAD0072FFDB /* Protocols */,
-				B606D14A21EF6AF50072FFDB /* Result.swift */,
-				B606D14C21EF6B1B0072FFDB /* RequestManager.swift */,
-				B606D15021EF6B490072FFDB /* ResultError.swift */,
-				B606D15221EF6B5B0072FFDB /* HTTPCode.swift */,
+				B606D17221EF90B80072FFDB /* SearchSongsRequest.swift */,
+				B606D17421EF91090072FFDB /* ITunesEndpoints.swift */,
+				B606D19621F070A60072FFDB /* Common */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -227,61 +200,6 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
-		B606D15A21EF6C390072FFDB /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				B606D17121EF90A90072FFDB /* Network */,
-				B606D15D21EF6C910072FFDB /* Model */,
-				B606D15B21EF6C480072FFDB /* BrowseSongsInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		B606D15D21EF6C910072FFDB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B606D15E21EF6CA20072FFDB /* SongData.swift */,
-				B606D17621EF95300072FFDB /* SearchSongsResponse.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B606D16021EF6D1E0072FFDB /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				B606D16221EF6D320072FFDB /* BrowseSongsPresenter.swift */,
-				B606D16421EF6D3B0072FFDB /* BrowseSongsViewModel.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		B606D16121EF6D240072FFDB /* ViewInterface */ = {
-			isa = PBXGroup;
-			children = (
-				B606D16821EF6DBA0072FFDB /* BrowseSongsViewController.swift */,
-				B606D16A21EF6E4F0072FFDB /* SongListCell.swift */,
-				B606D16B21EF6E4F0072FFDB /* SongListCell.xib */,
-			);
-			path = ViewInterface;
-			sourceTree = "<group>";
-		};
-		B606D16E21EF72F50072FFDB /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				B606D16F21EF73050072FFDB /* BrowseSongsRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		B606D17121EF90A90072FFDB /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				B606D17221EF90B80072FFDB /* SearchSongsRequest.swift */,
-				B606D17421EF91090072FFDB /* ITunesEndpoints.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		B606D17921EF9FF00072FFDB /* UIAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,37 +208,119 @@
 			path = UIAlert;
 			sourceTree = "<group>";
 		};
-		B606D17C21EFB5450072FFDB /* Router */ = {
+		B606D18C21F06E1B0072FFDB /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B606D14121EF6A190072FFDB /* Common */,
+				B606D19421F06F320072FFDB /* BrowseDetails */,
+				B606D19321F06F2B0072FFDB /* SongDetail */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		B606D18D21F06E230072FFDB /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B606D19521F070680072FFDB /* Common */,
+				B606D19221F06E920072FFDB /* BroseSongs */,
+				B606D19121F06E7A0072FFDB /* SongDetail */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		B606D18E21F06E2D0072FFDB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B606D19021F06E6A0072FFDB /* Model */,
+				B606D14421EF6AA70072FFDB /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		B606D19021F06E6A0072FFDB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B606D15E21EF6CA20072FFDB /* SongData.swift */,
+				B606D17621EF95300072FFDB /* SearchSongsResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B606D19121F06E7A0072FFDB /* SongDetail */ = {
 			isa = PBXGroup;
 			children = (
 				B606D18821EFB77E0072FFDB /* SongDetailRouter.swift */,
+				B606D18421EFB6800072FFDB /* SongDetailInteractor.swift */,
+				B606D18A21EFB7DA0072FFDB /* SongDetailPresenter.swift */,
+				B606D18021EFB57A0072FFDB /* SongDetailProtocols.swift */,
 			);
-			path = Router;
+			path = SongDetail;
 			sourceTree = "<group>";
 		};
-		B606D17D21EFB54F0072FFDB /* ViewInterface */ = {
+		B606D19221F06E920072FFDB /* BroseSongs */ = {
 			isa = PBXGroup;
 			children = (
-				B606D18621EFB75D0072FFDB /* SongDetailViewController.swift */,
+				B606D16F21EF73050072FFDB /* BrowseSongsRouter.swift */,
+				B606D16221EF6D320072FFDB /* BrowseSongsPresenter.swift */,
+				B606D15B21EF6C480072FFDB /* BrowseSongsInteractor.swift */,
+				B606D15821EF6C1C0072FFDB /* BrowseSongsProtocols.swift */,
 			);
-			path = ViewInterface;
+			path = BroseSongs;
 			sourceTree = "<group>";
 		};
-		B606D17E21EFB5580072FFDB /* Presenter */ = {
+		B606D19321F06F2B0072FFDB /* SongDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B606D19821F070DE0072FFDB /* ViewModel */,
+				B606D18621EFB75D0072FFDB /* SongDetailViewController.swift */,
+			);
+			path = SongDetail;
+			sourceTree = "<group>";
+		};
+		B606D19421F06F320072FFDB /* BrowseDetails */ = {
+			isa = PBXGroup;
+			children = (
+				B606D19721F070D90072FFDB /* ViewModel */,
+				B606D16821EF6DBA0072FFDB /* BrowseSongsViewController.swift */,
+				B606D16A21EF6E4F0072FFDB /* SongListCell.swift */,
+				B606D16B21EF6E4F0072FFDB /* SongListCell.xib */,
+			);
+			path = BrowseDetails;
+			sourceTree = "<group>";
+		};
+		B606D19521F070680072FFDB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B606D19621F070A60072FFDB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B606D14521EF6AAD0072FFDB /* Protocols */,
+				B606D14A21EF6AF50072FFDB /* Result.swift */,
+				B606D14C21EF6B1B0072FFDB /* RequestManager.swift */,
+				B606D15021EF6B490072FFDB /* ResultError.swift */,
+				B606D15221EF6B5B0072FFDB /* HTTPCode.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B606D19721F070D90072FFDB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B606D16421EF6D3B0072FFDB /* BrowseSongsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B606D19821F070DE0072FFDB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				B606D18221EFB6460072FFDB /* SongDetailViewModel.swift */,
-				B606D18A21EFB7DA0072FFDB /* SongDetailPresenter.swift */,
 			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		B606D17F21EFB5680072FFDB /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				B606D18421EFB6800072FFDB /* SongDetailInteractor.swift */,
-			);
-			path = Interactor;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
