@@ -70,7 +70,7 @@ class SongDetailViewController: UIViewController, SongDetailViewInterface {
         view.backgroundColor = .white
         extendedLayoutIncludesOpaqueBars = false
         edgesForExtendedLayout = []
-        title = "Song Details"
+        title = LocalizedStrings.SongDetails.title
         setupSongInfo()
         setupPlayer()
         setupLayout()
@@ -146,7 +146,7 @@ class SongDetailViewController: UIViewController, SongDetailViewInterface {
     }
     
     func showError(message: String) {
-        UIAlertController.show(title: "Oops!", message: message, in: self)
+        UIAlertController.show(title: LocalizedStrings.Common.genericErrorTitle, message: message, in: self)
     }
 
     // MARK: - Actions

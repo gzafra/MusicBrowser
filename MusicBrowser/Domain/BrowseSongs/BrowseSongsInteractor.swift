@@ -51,7 +51,7 @@ class BrowseSongsInteractor: BrowseSongsInteractorProtocol {
         switch sortOption.mode {
         case .price:
             songs = songs.sorted{
-                return sortOption.inverted ? $0.collectionPrice < $1.collectionPrice : $0.collectionPrice > $1.collectionPrice
+                return sortOption.inverted ? $0.trackPrice < $1.trackPrice : $0.trackPrice > $1.trackPrice
             }
         case .length:
             songs = songs.sorted{

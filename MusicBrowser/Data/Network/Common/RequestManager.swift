@@ -94,6 +94,7 @@ class RequestManager: RequestManagerProtocol {
                     request.completion?(Result.success(processedData))
                     
                 } catch {
+                    print(error)
                     request.completion?(Result.failure(ResultError.parsingError(message: error.localizedDescription)))
                 }
             }

@@ -31,13 +31,13 @@ class BrowseSongsPresenter: BrowseSongsPresenterProtocol {
             let viewModel = self.generateSongsViewModel(for: response.results)
             self.viewInterface?.viewShouldUpdate(with: viewModel)
         }) { [weak self] in
-            self?.viewInterface?.showError(message: "Failed to load data")
+            self?.viewInterface?.showError(message: LocalizedStrings.BrowseSongs.failedToLoad)
         }
     }
     
     func selectedCell(at index: Int) {
         guard let datasource = interactor.getSongList(with: index) else {
-            viewInterface?.showError(message: "Could not select song")
+            viewInterface?.showError(message: LocalizedStrings.BrowseSongs.couldNotSelect)
             return
         }
         router.navigateToSongDetail(with: datasource)
@@ -46,7 +46,14 @@ class BrowseSongsPresenter: BrowseSongsPresenterProtocol {
     private func generateSongsViewModel(for data: [SongData]) -> BrowseSongsViewModel {
         
         let songs = data.map{ song in
-            return SongViewModel(title: song.trackName, artist: song.artistName)
+            return SongViewModel(title: song.trackName,
+                                 artist: song.artistName,
+                                 albumTitle: song.collectionName ?? "",
+                                 releaseDate: DateFormatterHelper.formattedString(from: song.releaseDate),
+                                 coverThumbnailUrl: song.artworkUrl60,
+                                 songLength: NumberFormatterHelper.format(length: song.trackTimeMillis),
+                                 genre: song.primaryGenreName,
+                                 price: NumberFormatterHelper.format(rate: song.trackPrice, currencySymbol: "$"))
         }
         return BrowseSongsViewModel(songs: songs)
     }

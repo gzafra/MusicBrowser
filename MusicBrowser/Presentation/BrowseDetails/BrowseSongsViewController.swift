@@ -28,7 +28,7 @@ class BrowseSongsViewController: UIViewController, BrowseSongsViewInterface, Loa
     internal var loadingView = LoadingView(frame: .zero)
     lazy private var sortByButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Sort By...", for: .normal)
+        button.setTitle(LocalizedStrings.BrowseSongs.sortByButton, for: .normal)
         button.titleLabel?.textAlignment = .right
         button.isEnabled = false
         return button
@@ -51,7 +51,7 @@ class BrowseSongsViewController: UIViewController, BrowseSongsViewInterface, Loa
         edgesForExtendedLayout = []
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = false
-        title = "Browse Songs"
+        title = LocalizedStrings.BrowseSongs.title
         
         // Others
         setupTableView()
@@ -63,6 +63,8 @@ class BrowseSongsViewController: UIViewController, BrowseSongsViewInterface, Loa
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.layer.borderWidth = 1.0
+        tableView.layer.borderColor = UIColor.groupTableViewBackground.cgColor
         tableView.register(UINib(nibName: SongListCell.identifier, bundle: nil), forCellReuseIdentifier: SongListCell.identifier)
         view.addSubview(tableView)
     }
@@ -117,40 +119,40 @@ class BrowseSongsViewController: UIViewController, BrowseSongsViewInterface, Loa
     
     func showError(message: String) {
         endLoading()
-        UIAlertController.show(title: "Oops!", message: message, in: self)
+        UIAlertController.show(title: LocalizedStrings.Common.genericErrorTitle, message: message, in: self)
     }
 
     // MARK: - Sorting
     
     @objc func sortByTapped() {
-        let sortAlertController = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
-        let priceAscendingAction = UIAlertAction(title: "Price Ascending", style: .default) { [weak self] _ in
+        let sortAlertController = UIAlertController(title: LocalizedStrings.BrowseSongs.sortByTitle, message: nil, preferredStyle: .actionSheet)
+        let priceAscendingAction = UIAlertAction(title: LocalizedStrings.BrowseSongs.sortByPriceAscending, style: .default) { [weak self] _ in
             let option = SortOption(mode: .price, inverted: false )
             self?.presenter.sortOptionSelected(mode: option)
             self?.setupSortOptionButton(for: option)
         }
-        let priceDescendingAction = UIAlertAction(title: "Price Descending", style: .default) { [weak self] _ in
+        let priceDescendingAction = UIAlertAction(title: LocalizedStrings.BrowseSongs.sortByPriceDescending, style: .default) { [weak self] _ in
             let option = SortOption(mode: .price, inverted: true )
             self?.presenter.sortOptionSelected(mode: option)
             self?.setupSortOptionButton(for: option)
         }
-        let genreAction = UIAlertAction(title: "Genre", style: .default) { [weak self] _ in
+        let genreAction = UIAlertAction(title: LocalizedStrings.BrowseSongs.sortByGenre, style: .default) { [weak self] _ in
             let option = SortOption(mode: .genre, inverted: false )
             self?.presenter.sortOptionSelected(mode: option)
             self?.setupSortOptionButton(for: option)
         }
-        let lengthAscendingAction = UIAlertAction(title: "Length Ascending", style: .default) { [weak self] _ in
+        let lengthAscendingAction = UIAlertAction(title: LocalizedStrings.BrowseSongs.sortByLengthAscending, style: .default) { [weak self] _ in
             let option = SortOption(mode: .length, inverted: false )
             self?.presenter.sortOptionSelected(mode: option)
             self?.setupSortOptionButton(for: option)
         }
-        let lengthDescendingAction = UIAlertAction(title: "Length Descending", style: .default) { [weak self] _ in
+        let lengthDescendingAction = UIAlertAction(title: LocalizedStrings.BrowseSongs.sortByLengthDescending, style: .default) { [weak self] _ in
             let option = SortOption(mode: .length, inverted: true )
             self?.presenter.sortOptionSelected(mode: option)
             self?.setupSortOptionButton(for: option)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: LocalizedStrings.Common.cancel, style: .cancel, handler: nil)
         
         sortAlertController.addAction(priceAscendingAction)
         sortAlertController.addAction(priceDescendingAction)
@@ -164,7 +166,7 @@ class BrowseSongsViewController: UIViewController, BrowseSongsViewInterface, Loa
     private func setupSortOptionButton(for option: SortOption?) {
         if let _ = option {
             sortByButton.isSelected = true
-            sortByButton.setTitle("Sorted", for: .selected)
+            sortByButton.setTitle(LocalizedStrings.BrowseSongs.sorted, for: .selected)
         }else{
             sortByButton.isSelected = false
         }
@@ -175,11 +177,20 @@ class BrowseSongsViewController: UIViewController, BrowseSongsViewInterface, Loa
 
 extension BrowseSongsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return SongListCell.estimatedHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         presenter.selectedCell(at: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as? SongListCell)?.beginLoadImage()
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as? SongListCell)?.cancelLoadImage()
     }
 }
 

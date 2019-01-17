@@ -13,10 +13,10 @@ struct SongData: Decodable {
     let artistName: String
     let collectionName: String?
     let previewUrl: String
-    let artworkUrl30: String
+    let artworkUrl60: String
     let artworkUrl100: String
     let releaseDate: String
-    let collectionPrice: Double
+    let trackPrice: Double
     let primaryGenreName: String
-    let trackTimeMillis: Int
+    let trackTimeMillis: TimeInterval
 }
