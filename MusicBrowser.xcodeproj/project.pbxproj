@@ -32,6 +32,12 @@
 		B606D17521EF91090072FFDB /* ITunesEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D17421EF91090072FFDB /* ITunesEndpoints.swift */; };
 		B606D17721EF95300072FFDB /* SearchSongsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D17621EF95300072FFDB /* SearchSongsResponse.swift */; };
 		B606D17B21EFA0020072FFDB /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D17A21EFA0020072FFDB /* UIAlertControllerExtensions.swift */; };
+		B606D18121EFB57A0072FFDB /* SongDetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D18021EFB57A0072FFDB /* SongDetailProtocols.swift */; };
+		B606D18321EFB6460072FFDB /* SongDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D18221EFB6460072FFDB /* SongDetailViewModel.swift */; };
+		B606D18521EFB6800072FFDB /* SongDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D18421EFB6800072FFDB /* SongDetailInteractor.swift */; };
+		B606D18721EFB75D0072FFDB /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D18621EFB75D0072FFDB /* SongDetailViewController.swift */; };
+		B606D18921EFB77E0072FFDB /* SongDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D18821EFB77E0072FFDB /* SongDetailRouter.swift */; };
+		B606D18B21EFB7DA0072FFDB /* SongDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D18A21EFB7DA0072FFDB /* SongDetailPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +80,12 @@
 		B606D17421EF91090072FFDB /* ITunesEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesEndpoints.swift; sourceTree = "<group>"; };
 		B606D17621EF95300072FFDB /* SearchSongsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongsResponse.swift; sourceTree = "<group>"; };
 		B606D17A21EFA0020072FFDB /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
+		B606D18021EFB57A0072FFDB /* SongDetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailProtocols.swift; sourceTree = "<group>"; };
+		B606D18221EFB6460072FFDB /* SongDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewModel.swift; sourceTree = "<group>"; };
+		B606D18421EFB6800072FFDB /* SongDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailInteractor.swift; sourceTree = "<group>"; };
+		B606D18621EFB75D0072FFDB /* SongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
+		B606D18821EFB77E0072FFDB /* SongDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailRouter.swift; sourceTree = "<group>"; };
+		B606D18A21EFB7DA0072FFDB /* SongDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +179,11 @@
 		B606D14321EF6A600072FFDB /* SongDetailModule */ = {
 			isa = PBXGroup;
 			children = (
+				B606D17F21EFB5680072FFDB /* Interactor */,
+				B606D17E21EFB5580072FFDB /* Presenter */,
+				B606D17D21EFB54F0072FFDB /* ViewInterface */,
+				B606D17C21EFB5450072FFDB /* Router */,
+				B606D18021EFB57A0072FFDB /* SongDetailProtocols.swift */,
 			);
 			path = SongDetailModule;
 			sourceTree = "<group>";
@@ -273,6 +290,39 @@
 			path = UIAlert;
 			sourceTree = "<group>";
 		};
+		B606D17C21EFB5450072FFDB /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B606D18821EFB77E0072FFDB /* SongDetailRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B606D17D21EFB54F0072FFDB /* ViewInterface */ = {
+			isa = PBXGroup;
+			children = (
+				B606D18621EFB75D0072FFDB /* SongDetailViewController.swift */,
+			);
+			path = ViewInterface;
+			sourceTree = "<group>";
+		};
+		B606D17E21EFB5580072FFDB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B606D18221EFB6460072FFDB /* SongDetailViewModel.swift */,
+				B606D18A21EFB7DA0072FFDB /* SongDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B606D17F21EFB5680072FFDB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B606D18421EFB6800072FFDB /* SongDetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -374,22 +424,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B606D18921EFB77E0072FFDB /* SongDetailRouter.swift in Sources */,
 				B606D14721EF6AC40072FFDB /* RequestProtocol.swift in Sources */,
+				B606D18721EFB75D0072FFDB /* SongDetailViewController.swift in Sources */,
 				B606D17021EF73050072FFDB /* BrowseSongsRouter.swift in Sources */,
 				B606D15F21EF6CA20072FFDB /* SongData.swift in Sources */,
 				B606D17721EF95300072FFDB /* SearchSongsResponse.swift in Sources */,
 				B606D15321EF6B5B0072FFDB /* HTTPCode.swift in Sources */,
 				B606D14B21EF6AF50072FFDB /* Result.swift in Sources */,
 				B606D14921EF6ADA0072FFDB /* RequestManagerProtocol.swift in Sources */,
+				B606D18B21EFB7DA0072FFDB /* SongDetailPresenter.swift in Sources */,
 				B606D17321EF90B80072FFDB /* SearchSongsRequest.swift in Sources */,
 				B606D16921EF6DBA0072FFDB /* BrowseSongsViewController.swift in Sources */,
+				B606D18321EFB6460072FFDB /* SongDetailViewModel.swift in Sources */,
 				B606D14D21EF6B1B0072FFDB /* RequestManager.swift in Sources */,
 				B606D15C21EF6C480072FFDB /* BrowseSongsInteractor.swift in Sources */,
+				B606D18121EFB57A0072FFDB /* SongDetailProtocols.swift in Sources */,
 				B606D15921EF6C1C0072FFDB /* BrowseSongsProtocols.swift in Sources */,
 				B606D15121EF6B490072FFDB /* ResultError.swift in Sources */,
 				B606D15621EF6B8E0072FFDB /* LayoutExtensions.swift in Sources */,
 				B606D16C21EF6E4F0072FFDB /* SongListCell.swift in Sources */,
 				B606D12121EF69910072FFDB /* AppDelegate.swift in Sources */,
+				B606D18521EFB6800072FFDB /* SongDetailInteractor.swift in Sources */,
 				B606D17B21EFA0020072FFDB /* UIAlertControllerExtensions.swift in Sources */,
 				B606D14F21EF6B380072FFDB /* EndpointProtocol.swift in Sources */,
 				B606D16521EF6D3B0072FFDB /* BrowseSongsViewModel.swift in Sources */,

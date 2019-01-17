@@ -6,7 +6,7 @@
 //  Copyright © 2019 Guillermo Zafra. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class BrowseSongsRouter {
     
@@ -16,16 +16,17 @@ extension BrowseSongsRouter: BrowseSongsRouterProtocol {
     static func setupModule() -> BrowseSongsViewInterface {
         // Init
         let interactor = BrowseSongsInteractor()
-        let presenter = BrowseSongsPresenter(interactor: interactor)
         let router = BrowseSongsRouter()
-        let viewInterface = BrowseSongsViewController(presenter: presenter, router: router)
+        let presenter = BrowseSongsPresenter(interactor: interactor, router: router)
+        let viewInterface = BrowseSongsViewController(presenter: presenter)
 
         presenter.viewInterface = viewInterface
         
         return viewInterface
     }
     
-    func navigateToSongDetail() {
-        
+    func navigateToSongDetail(from navigationController: UINavigationController) {
+        guard let detailViewController = SongDetailRouter.setupModule() as? UIViewController else { return }
+        navigationController.pushViewController(detailViewController, animated: true)
     }
 }

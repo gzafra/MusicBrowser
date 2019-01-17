@@ -20,7 +20,6 @@ class BrowseSongsViewController: UIViewController {
     // MARK: - Properties
     
     var presenter: BrowseSongsPresenterProtocol
-    var router: BrowseSongsRouterProtocol
     
     // Outlets
     private var tableView = UITableView()
@@ -34,9 +33,8 @@ class BrowseSongsViewController: UIViewController {
     internal var viewModel: BrowseSongsViewModel?
 
     // MARK: - Lifecycle
-    public init(presenter: BrowseSongsPresenterProtocol, router: BrowseSongsRouterProtocol) {
+    public init(presenter: BrowseSongsPresenterProtocol) {
         self.presenter = presenter
-        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -119,6 +117,10 @@ class BrowseSongsViewController: UIViewController {
 extension BrowseSongsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }
 

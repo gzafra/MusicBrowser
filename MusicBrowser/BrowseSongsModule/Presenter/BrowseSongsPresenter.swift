@@ -10,10 +10,12 @@ import Foundation
 
 class BrowseSongsPresenter {
     var interactor: BrowseSongsInteractorProtocol
+    var router: BrowseSongsRouterProtocol
     weak var viewInterface: BrowseSongsViewInterface?
     
-    init(interactor: BrowseSongsInteractorProtocol) {
+    init(interactor: BrowseSongsInteractorProtocol, router: BrowseSongsRouterProtocol) {
         self.interactor = interactor
+        self.router = router
     }
 }
 
@@ -32,6 +34,10 @@ extension BrowseSongsPresenter: BrowseSongsPresenterProtocol {
         }) { [weak self] in
             self?.viewInterface?.showError(message: "Failed to load data")
         }
+    }
+    
+    func selectedCell(at index: Int) {
+        
     }
     
     private func generateSongsViewModel(for data: SearchSongsResponse) -> BrowseSongsViewModel {
