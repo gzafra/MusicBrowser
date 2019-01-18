@@ -13,6 +13,7 @@ enum Images: String {
     case nextIcon = "next"
     case playIcon = "play"
     case pauseIcon = "pause"
+    case shareIcon = "share"
     
     var image: UIImage? {
         return UIImage(named: rawValue)

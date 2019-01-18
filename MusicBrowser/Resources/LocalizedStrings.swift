@@ -30,5 +30,6 @@ enum LocalizedStrings {
     }
     enum SongDetails {
         static let title = "Song Details"
+        static let shareContent = "I'm playing %@ by %@ in MusicBrowser. It's awesome!"
     }
 }

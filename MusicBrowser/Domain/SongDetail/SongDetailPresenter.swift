@@ -12,6 +12,7 @@ enum SongControlButton {
     case play
     case next
     case prev
+    case stop
 }
 
 class SongDetailPresenter: SongDetailPresenterProtocol {
@@ -51,7 +52,15 @@ class SongDetailPresenter: SongDetailPresenterProtocol {
         case .play:
             interactor.playSong()
             viewInterface?.viewShouldUpdate(with: generateViewModel(with: interactor.getCurrentSong()))
+        case .stop:
+            interactor.stopSong()
+            viewInterface?.viewShouldUpdate(with: generateViewModel(with: interactor.getCurrentSong()))
         }
+    }
+    
+    func getShareContent() -> String {
+        let songData = interactor.getCurrentSong()
+        return String(format: LocalizedStrings.SongDetails.shareContent, songData.data.trackName, songData.data.artistName)
     }
 }
 

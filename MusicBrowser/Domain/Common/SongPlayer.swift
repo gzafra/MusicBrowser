@@ -19,13 +19,13 @@ protocol SongPlayerProtocol {
     func setup(with url: URL)
 }
 
-protocol SongPlayerDelegate {
+protocol SongPlayerDelegate: class {
     func didFinishPlaying()
 }
 
 class SongPlayer: SongPlayerProtocol {
-    private var player: AVPlayer? = nil
-    var delegate: SongPlayerDelegate?
+    private var player: AVPlayer? = nil // TODO: This should be a shared session for the app instead of a single player
+    weak var delegate: SongPlayerDelegate?
     
     func play() {
         player?.play()

@@ -10,6 +10,7 @@ import Foundation
 @testable import MusicBrowser
 
 final class SongDetailInteractorMock: SongDetailInteractorProtocol {
+    
     var delegate: SongDetailInteractorDelegate?
     var isPlaying: Bool = false
     
@@ -30,7 +31,8 @@ final class SongDetailInteractorMock: SongDetailInteractorProtocol {
         isPlaying = !isPlaying
     }
     
-    
-    
+    func stopSong() {
+        isPlaying = false
+    }
     
 }

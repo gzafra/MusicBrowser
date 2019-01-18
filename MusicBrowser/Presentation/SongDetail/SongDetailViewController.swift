@@ -17,6 +17,10 @@ class SongDetailViewController: UIViewController, SongDetailViewInterface {
         static let coverImageSize: CGFloat = UIScreen.main.bounds.size.width * 0.7
         
         static let iconSize: CGFloat = 60
+        enum Margins {
+            static let left: CGFloat = 12
+            static let right: CGFloat = 12
+        }
     }
     
     var presenter: SongDetailPresenterProtocol
@@ -66,20 +70,35 @@ class SongDetailViewController: UIViewController, SongDetailViewInterface {
         presenter.viewDidLoad()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        presenter.didAction(button: .stop)
+    }
+    
     private func commonInit() {
         view.backgroundColor = .white
         extendedLayoutIncludesOpaqueBars = false
         edgesForExtendedLayout = []
         title = LocalizedStrings.SongDetails.title
+        setupShare()
         setupSongInfo()
         setupPlayer()
         setupLayout()
     }
     
+    private func setupShare() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Images.shareIcon.image, style: .plain, target: self, action: #selector(shareButtonTapped))
+    }
+    
     private func setupSongInfo() {
         view.addSubview(coverImage)
-        songTitleLabel.numberOfLines = 0
+        songTitleLabel.numberOfLines = 2
+        songTitleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        songTitleLabel.textAlignment = .center
         view.addSubview(songTitleLabel)
+        artistNameLabel.font = UIFont.systemFont(ofSize: 15)
+        artistNameLabel.textColor = .gray
         view.addSubview(artistNameLabel)
     }
     
@@ -103,7 +122,9 @@ class SongDetailViewController: UIViewController, SongDetailViewInterface {
         
         // Horizontal
         songTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        view.addConstraintsWithFormat("H:|-(>=\(Layout.Margins.left))-[v0]-(>=\(Layout.Margins.left))-|", views: songTitleLabel) // Margins
         artistNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        view.addConstraintsWithFormat("H:|-(>=\(Layout.Margins.left))-[v0]-(>=\(Layout.Margins.left))-|", views: artistNameLabel) // Margins
         coverImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         prevButton.centerXAnchor.constraint(equalTo: playButton.centerXAnchor, constant: -90).isActive = true
@@ -161,5 +182,10 @@ class SongDetailViewController: UIViewController, SongDetailViewInterface {
     
     @objc func prevTapped() {
         presenter.didAction(button: .prev)
+    }
+    
+    @objc func shareButtonTapped() {
+        let activityVC = UIActivityViewController(activityItems: [presenter.getShareContent()], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
     }
 }

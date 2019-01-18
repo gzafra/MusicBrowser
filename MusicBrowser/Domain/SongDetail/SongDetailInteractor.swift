@@ -18,7 +18,7 @@ typealias CurrentSongData = (data: SongData, state: SongState, next: SongData?, 
 class SongDetailInteractor: SongDetailInteractorProtocol {
 
     private let dataSource: SongListDataSource
-    private let player: SongPlayerProtocol
+    private var player: SongPlayerProtocol
     private var state: SongState = .paused {
         didSet{
             delegate?.didChangeState(state)
@@ -30,6 +30,7 @@ class SongDetailInteractor: SongDetailInteractorProtocol {
     init(dataSource: SongListDataSource, player: SongPlayerProtocol = SongPlayer()) {
         self.dataSource = dataSource
         self.player = player
+        self.player.delegate = self
         loadSong()
     }
     
@@ -44,7 +45,10 @@ class SongDetailInteractor: SongDetailInteractorProtocol {
             pauseSong()
             loadSong()
             playSong()
+        }else{
+            loadSong()
         }
+
         return (data: dataSource.selectedSong, state: state, next: dataSource.next, prev: dataSource.previous)
     }
     
@@ -54,27 +58,10 @@ class SongDetailInteractor: SongDetailInteractorProtocol {
             pauseSong()
             loadSong()
             playSong()
+        }else{
+            loadSong()
         }
         return (data: dataSource.selectedSong, state: state, next: dataSource.next, prev: dataSource.previous)
-    }
-    
-    /// Loads a new AudioPlayer with the current song and automatically plays
-    private func loadSong() {
-        let song = getCurrentSong()
-        guard let url = URL(string: song.data.previewUrl) else { return }
-        
-        player.setup(with: url)
-    }
-
-    
-    @objc func finishVideo() {
-        state = .paused
-    }
-    
-    /// Stops currently playing song
-    private func pauseSong() {
-        player.pause()
-        state = .paused
     }
     
     /// Plays / Pauses the current loaded song or loads one if nothing is playing
@@ -87,4 +74,31 @@ class SongDetailInteractor: SongDetailInteractorProtocol {
         }
         
     }
+    
+    func stopSong() {
+        player.pause()
+    }
+    
+    /// Loads a new AudioPlayer with the current song and automatically plays
+    private func loadSong() {
+        let song = getCurrentSong()
+        guard let url = URL(string: song.data.previewUrl) else { return }
+        
+        player.setup(with: url)
+    }
+    
+    /// Stops currently playing song
+    private func pauseSong() {
+        player.pause()
+        state = .paused
+    }
+}
+
+// MARK: - SongPlayerDelegate
+
+extension SongDetailInteractor: SongPlayerDelegate {
+    func didFinishPlaying() {
+       state = .paused
+    }
+    
 }

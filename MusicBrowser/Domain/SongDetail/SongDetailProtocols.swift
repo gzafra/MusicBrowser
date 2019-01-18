@@ -13,6 +13,7 @@ protocol SongDetailInteractorProtocol: class {
     func skipNextSong() -> (data: SongData, state: SongState, next: SongData?, prev: SongData?)?
     func skipPreviousSong() -> (data: SongData, state: SongState, next: SongData?, prev: SongData?)?
     func playSong()
+    func stopSong()
     var delegate: SongDetailInteractorDelegate? { get set }
 }
 
@@ -25,6 +26,7 @@ protocol SongDetailPresenterProtocol: class {
     var viewInterface: SongDetailViewInterface? { get set }
     func viewDidLoad()
     func didAction(button: SongControlButton)
+    func getShareContent() -> String
 }
 
 protocol SongDetailViewInterface: class {
