@@ -339,7 +339,6 @@
 			children = (
 				B606D18821EFB77E0072FFDB /* SongDetailRouter.swift */,
 				B606D18421EFB6800072FFDB /* SongDetailInteractor.swift */,
-				B606D18A21EFB7DA0072FFDB /* SongDetailPresenter.swift */,
 				B606D18021EFB57A0072FFDB /* SongDetailProtocols.swift */,
 			);
 			path = SongDetail;
@@ -350,7 +349,6 @@
 			children = (
 				B606D1A221F0C61A0072FFDB /* Sorting */,
 				B606D16F21EF73050072FFDB /* BrowseSongsRouter.swift */,
-				B606D16221EF6D320072FFDB /* BrowseSongsPresenter.swift */,
 				B606D15B21EF6C480072FFDB /* BrowseSongsInteractor.swift */,
 				B606D15821EF6C1C0072FFDB /* BrowseSongsProtocols.swift */,
 			);
@@ -360,8 +358,9 @@
 		B606D19321F06F2B0072FFDB /* SongDetail */ = {
 			isa = PBXGroup;
 			children = (
-				B606D19821F070DE0072FFDB /* ViewModel */,
+				B606D18A21EFB7DA0072FFDB /* SongDetailPresenter.swift */,
 				B606D18621EFB75D0072FFDB /* SongDetailViewController.swift */,
+				B606D19821F070DE0072FFDB /* ViewModel */,
 			);
 			path = SongDetail;
 			sourceTree = "<group>";
@@ -369,8 +368,9 @@
 		B606D19421F06F320072FFDB /* BrowseDetails */ = {
 			isa = PBXGroup;
 			children = (
-				B606D19721F070D90072FFDB /* ViewModel */,
+				B606D16221EF6D320072FFDB /* BrowseSongsPresenter.swift */,
 				B606D16821EF6DBA0072FFDB /* BrowseSongsViewController.swift */,
+				B606D19721F070D90072FFDB /* ViewModel */,
 				B606D16A21EF6E4F0072FFDB /* SongListCell.swift */,
 				B606D16B21EF6E4F0072FFDB /* SongListCell.xib */,
 			);
