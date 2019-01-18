@@ -10,24 +10,32 @@ import XCTest
 @testable import MusicBrowser
 
 class BrowseSongsViewControllerTests: XCTestCase {
-    let router = BrowseSongsRouterMock()
-    let mockInteractor = BrowseSongsInteractor(requestManager: MockRequestManager(promiseJson: MockRequestManagerPromises.iTunesSearch))
     
-    func testBrowseSongsVC() {
+    private func setupEnvironment() -> (vc: BrowseSongsViewController, router: BrowseSongsRouterMock, presenter: BrowseSongsPresenter)? {
+        let router = BrowseSongsRouterMock()
+        let mockInteractor = BrowseSongsInteractor(requestManager: MockRequestManager(promiseJson: MockRequestManagerPromises.iTunesSearch))
         let vc = BrowseSongsRouter.setupModule(with: UINavigationController())
         guard let browseSongsVC = vc as? BrowseSongsViewController else {
+            return nil
+        }
+        let presenter = BrowseSongsPresenter(interactor: mockInteractor, router: router)
+        browseSongsVC.presenter = presenter
+        return (vc: browseSongsVC, router: router, presenter: presenter)
+    }
+
+    
+    func testBrowseSongsVC() {
+        guard let environment = setupEnvironment() else {
             XCTFail()
             return
         }
+
+        environment.vc.viewDidLoad()
         
-        browseSongsVC.presenter = BrowseSongsPresenter(interactor: mockInteractor, router: router)
-        
-        browseSongsVC.viewDidLoad()
-        
-        testExpectation(description: "RatesTVC didLoad", actionBlock: { (expectation) in
+        testExpectation(description: "Browse Songs VC didLoad", actionBlock: { (expectation) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-                XCTAssertNotNil(browseSongsVC.tableView)
-                XCTAssertGreaterThan(browseSongsVC.tableView.numberOfRows(inSection: 0), 0)
+                XCTAssertNotNil(environment.vc.tableView)
+                XCTAssertGreaterThan(environment.vc.tableView.numberOfRows(inSection: 0), 0)
                 expectation.fulfill()
             })
         }, waitFor: 10.0)

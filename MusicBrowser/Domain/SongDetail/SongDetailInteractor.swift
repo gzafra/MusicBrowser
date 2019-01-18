@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import AVFoundation
-import AVKit
 
 enum SongState {
     case playing
@@ -20,7 +18,7 @@ typealias CurrentSongData = (data: SongData, state: SongState, next: SongData?, 
 class SongDetailInteractor: SongDetailInteractorProtocol {
 
     private let dataSource: SongListDataSource
-    private var player: AVPlayer? = nil
+    private let player: SongPlayerProtocol
     private var state: SongState = .paused {
         didSet{
             delegate?.didChangeState(state)
@@ -29,8 +27,10 @@ class SongDetailInteractor: SongDetailInteractorProtocol {
     
     weak var delegate: SongDetailInteractorDelegate?
     
-    init(dataSource: SongListDataSource) {
+    init(dataSource: SongListDataSource, player: SongPlayerProtocol = SongPlayer()) {
         self.dataSource = dataSource
+        self.player = player
+        loadSong()
     }
     
     func getCurrentSong() -> CurrentSongData {
@@ -43,6 +43,7 @@ class SongDetailInteractor: SongDetailInteractorProtocol {
         if state == .playing {
             pauseSong()
             loadSong()
+            playSong()
         }
         return (data: dataSource.selectedSong, state: state, next: dataSource.next, prev: dataSource.previous)
     }
@@ -52,6 +53,7 @@ class SongDetailInteractor: SongDetailInteractorProtocol {
         if state == .playing {
             pauseSong()
             loadSong()
+            playSong()
         }
         return (data: dataSource.selectedSong, state: state, next: dataSource.next, prev: dataSource.previous)
     }
@@ -60,13 +62,8 @@ class SongDetailInteractor: SongDetailInteractorProtocol {
     private func loadSong() {
         let song = getCurrentSong()
         guard let url = URL(string: song.data.previewUrl) else { return }
-        let playerItem: AVPlayerItem = AVPlayerItem(url: url)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(finishVideo), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-        
-        player = AVPlayer(playerItem: playerItem)
-        player?.play()
-        state = .playing
+        player.setup(with: url)
     }
 
     
@@ -76,21 +73,17 @@ class SongDetailInteractor: SongDetailInteractorProtocol {
     
     /// Stops currently playing song
     private func pauseSong() {
-        player?.pause()
+        player.pause()
         state = .paused
     }
     
     /// Plays / Pauses the current loaded song or loads one if nothing is playing
     func playSong() {
-        if let player = player {
-            if player.timeControlStatus == .playing {
-                pauseSong()
-            }else{
-                player.play()
-                state = .playing
-            }
+        if player.isPlaying { // TODO: NEed to know if a song is not loaded to setup
+            pauseSong()
         }else{
-            loadSong()
+            player.play()
+            state = .playing
         }
         
     }

@@ -25,6 +25,4 @@ class BrowseSongsViewInterfaceMock: BrowseSongsViewInterface {
     func showError(message: String) {
         errorShown = true
     }
-    
-    
 }

@@ -56,6 +56,15 @@
 		B606D1C221F0F7D80072FFDB /* BrowseSongsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1C121F0F7D80072FFDB /* BrowseSongsViewControllerTests.swift */; };
 		B606D1C521F104DB0072FFDB /* BrowseSongsViewInterfaceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1C421F104DB0072FFDB /* BrowseSongsViewInterfaceMock.swift */; };
 		B606D1C721F10A1B0072FFDB /* BrowseSongsRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1C621F10A1B0072FFDB /* BrowseSongsRouterMock.swift */; };
+		B606D1CB21F1197D0072FFDB /* SongListDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1CA21F1197D0072FFDB /* SongListDataSourceTests.swift */; };
+		B606D1CE21F11BA50072FFDB /* SongDetailViewInterfaceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1CD21F11BA50072FFDB /* SongDetailViewInterfaceMock.swift */; };
+		B606D1D021F11CA00072FFDB /* SongDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1CF21F11CA00072FFDB /* SongDetailInteractorTests.swift */; };
+		B606D1D221F11CB50072FFDB /* SongDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1D121F11CB50072FFDB /* SongDetailPresenterTests.swift */; };
+		B606D1D421F11CED0072FFDB /* SongDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1D321F11CED0072FFDB /* SongDetailViewControllerTests.swift */; };
+		B606D1D621F11FFB0072FFDB /* SongPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1D521F11FFB0072FFDB /* SongPlayer.swift */; };
+		B606D1D821F1293F0072FFDB /* MockSongPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1D721F1293F0072FFDB /* MockSongPlayer.swift */; };
+		B606D1DA21F135E00072FFDB /* MockGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1D921F135E00072FFDB /* MockGenerator.swift */; };
+		B606D1DE21F1AB760072FFDB /* SongDetailInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B606D1DD21F1AB760072FFDB /* SongDetailInteractorMock.swift */; };
 		B7A7A1D7DBCAC220C0C43D01 /* Pods_MusicBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F14CC794AD9995A4EDFACE /* Pods_MusicBrowser.framework */; };
 		D908FE8D9FF872EF5731EB98 /* Pods_MusicBrowserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C88F308113A32D8A9FCF5B /* Pods_MusicBrowserTests.framework */; };
 /* End PBXBuildFile section */
@@ -128,6 +137,15 @@
 		B606D1C121F0F7D80072FFDB /* BrowseSongsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSongsViewControllerTests.swift; sourceTree = "<group>"; };
 		B606D1C421F104DB0072FFDB /* BrowseSongsViewInterfaceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSongsViewInterfaceMock.swift; sourceTree = "<group>"; };
 		B606D1C621F10A1B0072FFDB /* BrowseSongsRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSongsRouterMock.swift; sourceTree = "<group>"; };
+		B606D1CA21F1197D0072FFDB /* SongListDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListDataSourceTests.swift; sourceTree = "<group>"; };
+		B606D1CD21F11BA50072FFDB /* SongDetailViewInterfaceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewInterfaceMock.swift; sourceTree = "<group>"; };
+		B606D1CF21F11CA00072FFDB /* SongDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailInteractorTests.swift; sourceTree = "<group>"; };
+		B606D1D121F11CB50072FFDB /* SongDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailPresenterTests.swift; sourceTree = "<group>"; };
+		B606D1D321F11CED0072FFDB /* SongDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewControllerTests.swift; sourceTree = "<group>"; };
+		B606D1D521F11FFB0072FFDB /* SongPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongPlayer.swift; sourceTree = "<group>"; };
+		B606D1D721F1293F0072FFDB /* MockSongPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSongPlayer.swift; sourceTree = "<group>"; };
+		B606D1D921F135E00072FFDB /* MockGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGenerator.swift; sourceTree = "<group>"; };
+		B606D1DD21F1AB760072FFDB /* SongDetailInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailInteractorMock.swift; sourceTree = "<group>"; };
 		C6C88F308113A32D8A9FCF5B /* Pods_MusicBrowserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicBrowserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12131A729466857873E8CE3 /* Pods-MusicBrowserTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicBrowserTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicBrowserTests/Pods-MusicBrowserTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -363,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				B606D19921F072540072FFDB /* SongListDataSource.swift */,
+				B606D1D521F11FFB0072FFDB /* SongPlayer.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -445,6 +464,7 @@
 			children = (
 				B606D1B921F0F23F0072FFDB /* JSON */,
 				B606D1B721F0F1FD0072FFDB /* MockRequestManager.swift */,
+				B606D1D921F135E00072FFDB /* MockGenerator.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -471,6 +491,7 @@
 		B606D1BD21F0F2BC0072FFDB /* CommonTests */ = {
 			isa = PBXGroup;
 			children = (
+				B606D1CA21F1197D0072FFDB /* SongListDataSourceTests.swift */,
 			);
 			path = CommonTests;
 			sourceTree = "<group>";
@@ -478,6 +499,10 @@
 		B606D1BE21F0F2C70072FFDB /* SongDetailsTests */ = {
 			isa = PBXGroup;
 			children = (
+				B606D1CC21F11B930072FFDB /* Mock */,
+				B606D1CF21F11CA00072FFDB /* SongDetailInteractorTests.swift */,
+				B606D1D121F11CB50072FFDB /* SongDetailPresenterTests.swift */,
+				B606D1D321F11CED0072FFDB /* SongDetailViewControllerTests.swift */,
 			);
 			path = SongDetailsTests;
 			sourceTree = "<group>";
@@ -487,6 +512,16 @@
 			children = (
 				B606D1C421F104DB0072FFDB /* BrowseSongsViewInterfaceMock.swift */,
 				B606D1C621F10A1B0072FFDB /* BrowseSongsRouterMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		B606D1CC21F11B930072FFDB /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				B606D1CD21F11BA50072FFDB /* SongDetailViewInterfaceMock.swift */,
+				B606D1D721F1293F0072FFDB /* MockSongPlayer.swift */,
+				B606D1DD21F1AB760072FFDB /* SongDetailInteractorMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -689,6 +724,7 @@
 				B606D18121EFB57A0072FFDB /* SongDetailProtocols.swift in Sources */,
 				B606D15921EF6C1C0072FFDB /* BrowseSongsProtocols.swift in Sources */,
 				B606D1AB21F0D5420072FFDB /* LoadingViewController.swift in Sources */,
+				B606D1D621F11FFB0072FFDB /* SongPlayer.swift in Sources */,
 				B606D15121EF6B490072FFDB /* ResultError.swift in Sources */,
 				B606D15621EF6B8E0072FFDB /* LayoutExtensions.swift in Sources */,
 				B606D16C21EF6E4F0072FFDB /* SongListCell.swift in Sources */,
@@ -708,10 +744,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B606D1CE21F11BA50072FFDB /* SongDetailViewInterfaceMock.swift in Sources */,
 				B606D13621EF69930072FFDB /* BrowseSongsInteractorTests.swift in Sources */,
+				B606D1CB21F1197D0072FFDB /* SongListDataSourceTests.swift in Sources */,
+				B606D1D821F1293F0072FFDB /* MockSongPlayer.swift in Sources */,
 				B606D1C021F0F7AE0072FFDB /* BrowseSongsPresenterTests.swift in Sources */,
+				B606D1D221F11CB50072FFDB /* SongDetailPresenterTests.swift in Sources */,
 				B606D1C221F0F7D80072FFDB /* BrowseSongsViewControllerTests.swift in Sources */,
+				B606D1D421F11CED0072FFDB /* SongDetailViewControllerTests.swift in Sources */,
 				B606D1B821F0F1FD0072FFDB /* MockRequestManager.swift in Sources */,
+				B606D1DA21F135E00072FFDB /* MockGenerator.swift in Sources */,
+				B606D1DE21F1AB760072FFDB /* SongDetailInteractorMock.swift in Sources */,
+				B606D1D021F11CA00072FFDB /* SongDetailInteractorTests.swift in Sources */,
 				B606D1B521F0F1C00072FFDB /* Extensions.swift in Sources */,
 				B606D1C721F10A1B0072FFDB /* BrowseSongsRouterMock.swift in Sources */,
 				B606D1C521F104DB0072FFDB /* BrowseSongsViewInterfaceMock.swift in Sources */,
