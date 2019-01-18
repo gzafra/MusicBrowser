@@ -17,6 +17,7 @@ extension LoadingViewController where Self: UIViewController {
         view.addSubview(loadingView)
         loadingView.autoPinEdges(to: view)
         loadingView.activityIndicator.startAnimating()
+        view.bringSubviewToFront(loadingView)
     }
     
     func endLoading() {
