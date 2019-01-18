@@ -87,14 +87,10 @@ class RequestManager: RequestManagerProtocol {
                 
                 do {
                     let processedData = try request.processResponseData(data: serverData)
-                    if let data = serverData {
-                        let stringData = String(data: data, encoding: .utf8)
-                        print(stringData)
-                    }
                     request.completion?(Result.success(processedData))
                     
                 } catch {
-                    print(error)
+                    
                     request.completion?(Result.failure(ResultError.parsingError(message: error.localizedDescription)))
                 }
             }

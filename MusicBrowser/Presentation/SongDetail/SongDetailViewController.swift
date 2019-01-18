@@ -139,7 +139,7 @@ class SongDetailViewController: UIViewController, SongDetailViewInterface {
         nextButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor).isActive = true
         
         // Size
-        songTitleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        songTitleLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         artistNameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         coverImage.constraintSize(equalTo: CGSize(width: Layout.coverImageSize, height: Layout.coverImageSize))
         playButton.constraintSize(equalTo: CGSize(width: Layout.iconSize, height: Layout.iconSize))

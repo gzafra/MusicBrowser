@@ -53,7 +53,7 @@ class BrowseSongsPresenter: BrowseSongsPresenterProtocol {
                                  coverThumbnailUrl: song.artworkUrl60,
                                  songLength: NumberFormatterHelper.format(length: song.trackTimeMillis),
                                  genre: song.primaryGenreName,
-                                 price: NumberFormatterHelper.format(rate: song.trackPrice, currencySymbol: "$"))
+                                 price: NumberFormatterHelper.format(rate: song.trackPrice, currencySymbol: "$")) // FIXME: Dollar sign hardcoded here, beware!
         }
         return BrowseSongsViewModel(songs: songs)
     }
